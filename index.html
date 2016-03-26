@@ -24,6 +24,13 @@
     var postsIDS = [];
     var postNumLikes = []; 
       
+Object.observe(postNumLikes, function(changes) {
+   if(postNumLikes.length=275){    
+   drawGraph();
+               console.log("going to draw graph now...");
+   }
+}); 
+      
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '929095907204857',
@@ -170,18 +177,8 @@
             );
         })(k);
     }
-        wait(10000);
-        drawGraph();
-        console.log("going to draw graph now...");
     }
       
-         function wait(ms){
-   var start = new Date().getTime();
-   var end = start;
-   while(end < start + ms) {
-     end = new Date().getTime();
- }
-}
       
       function drawGraph() {   
         console.log("inside graph method now");  
