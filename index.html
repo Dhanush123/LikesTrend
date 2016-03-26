@@ -19,7 +19,7 @@
 <body>
   <script>
     var postsDates = ["sadasddsf", "asdasdsdf", "asdasddsf"];
-    var postIDS = ["sadasddsf", "sadasddsf", "sadasddsf"];
+    var postsIDS = ["sadasddsf", "sadasddsf", "sadasddsf"];
     var postNumLikes = ["sadasddsf", "sadasddsf", "sadasddsf"]; 
       
   window.fbAsyncInit = function() {
@@ -103,8 +103,8 @@
       getNumLikes();    
     }
     function getNumLikes(){
-        for (var i = 0; i < postIDS.length; i++){
-            var postID = postIDS[i];
+        for (var i = 0; i < postsIDS.length; i++){
+            var postID = postsIDS[i];
             var url = '/'+postID+'/like'
             FB.api(
                url,
