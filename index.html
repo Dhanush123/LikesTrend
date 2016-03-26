@@ -98,7 +98,7 @@
             index++;
           }  
              console.log("postsIDS.length = "+postsIDS.length+", responseSize = "+responseSize);  
-               getFBPosts2();
+             getFBPosts2();
             // Insert your code here
            }
       ); 
@@ -129,18 +129,20 @@
             postsDates[index] = postDate;
             index++;
           }  
+             console.log("postsDates.length = "+postsDates.length+", responseSize = "+responseSize);  
+             getNumLikes();         
             // Insert your code here
            }
       ); 
           
-      while(postsDates.length!=responseSize){
-          console.log('working on dates...');
-      }    
-      if(postsDates.length==responseSize){
-          console.log("going to likes methods now!");
-          getNumLikes();
-      }       
-    }
+//      while(postsDates.length!=responseSize){
+//          console.log('working on dates...');
+//      }    
+//      if(postsDates.length==responseSize){
+//          console.log("going to likes methods now!");
+//          getNumLikes();
+//      }       
+//    }
       
     function getNumLikes(){
         for (var i = 0; i < postsIDS.length; i++){
