@@ -158,7 +158,12 @@
               {"summary":"true"},
               function(response) {
                   console.log('response to likes API call: '+response);
-                  postNumLikes[k] = response.summary.total_count;
+                  if(response.summary.total_count==undefined){
+                                          postNumLikes[k] = 0;  
+                   }
+                  else{
+                       postNumLikes[k] = response.summary.total_count;
+                  }
                   console.log("postNumLikes["+k+"] = "+postNumLikes[k]);
                   // Insert your code here
               }
