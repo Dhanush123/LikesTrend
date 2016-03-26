@@ -17,12 +17,6 @@
 
 
 <body>
-          <!--
-        Below we include the Login Button social plugin. This button uses
-        the JavaScript SDK to present a graphical Login button that triggers
-        the FB.login() function when clicked.
-      -->  <fb:login-button scope="public_profile,email,user_posts" onlogin="checkLoginState();" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="false">
-        </fb:login-button>
   <script>
     // This is called with the results from from FB.getLoginStatus().
     function statusChangeCallback(response) {
@@ -115,5 +109,11 @@
       );
     }
   </script>
+              <!--
+        Below we include the Login Button social plugin. This button uses
+        the JavaScript SDK to present a graphical Login button that triggers
+        the FB.login() function when clicked.
+      -->  <fb:login-button scope="public_profile,email,user_posts" onlogin="checkLoginState();" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="false">
+        </fb:login-button>
 </body>
     
