@@ -90,13 +90,16 @@
         {"fields":"message"},
            function(response) {
           for(var k in response.data) {
-            var post = response.data[k].id;
+            var postID = response.data[k].id;
+            var postDate = response.data[k].created_time;  
             if(post !== undefined || post !== null){
-              postsIDS[index] = post;
+              postsIDS[index] = postID;
+              postsDates[index] = postDate;
             }
             index++;
           }
           console.log("got posts' IDs: "+postsIDS);
+          console.log("got posts' dates: "+postsDates);       
             // Insert your code here
            }
       );
@@ -105,7 +108,7 @@
     function getNumLikes(){
         for (var i = 0; i < postsIDS.length; i++){
             var postID = postsIDS[i];
-            var url = '/'+postID+'/like'
+            var url = '/'+postID+'/likes'
             FB.api(
                url,
               'GET',
