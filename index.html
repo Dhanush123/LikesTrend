@@ -83,40 +83,57 @@
       //only getting 274? back tho..
     } 
     function getFBPosts() {
+      var responseSize = 0;
       var index = 0;
       FB.api(
         '/me/feed?limit=1000',
         'GET',
         {"fields":"message"},
            function(response) {
+          responseSize = response.data.length;       
           for(var k in response.data) {
             var postID = response.data[k].id;
             postsIDS[index] = postID;
+            console.log("got post ID: "+postsIDS[index]);  
             index++;
-          }
-          console.log("got posts' IDs: "+postsIDS);     
+          }   
             // Insert your code here
            }
       ); 
-        getFBPosts2();
+      while(postsIDS.length!=responseSize){
+          console.log('working on IDs...');
+      }    
+      if(postsIDS.length==responseSize){
+          console.log("going to dates methods now!");
+          getFBPosts2();
+      }    
+        
     }
       function getFBPosts2() {
+      var responseSize = 0;
       var index = 0;
       FB.api(
         '/me/feed?limit=1000',
         'GET',
         {"fields":"message"},
            function(response) {
+          responseSize = response.data.length;         
           for(var k in response.data) {
             var postDate = response.data[k].created_time;  
             postsDates[index] = postDate;
             index++;
-          }
-          console.log("got posts' dates: "+postsDates);       
+          }  
             // Insert your code here
            }
       ); 
-        getNumLikes();
+          
+      while(postsDates.length!=responseSize){
+          console.log('working on dates...');
+      }    
+      if(postsDates.length==responseSize){
+          console.log("going to likes methods now!");
+          getNumLikes();
+      }       
     }
       
     function getNumLikes(){
@@ -133,7 +150,7 @@
               }
             );
         }
-        console.log("got posts' dates?: "+postsDates);  
+        console.log("got posts' dates: "+postsDates);  
         console.log("got posts' likes: "+postNumLikes);
     }  
   </script>
