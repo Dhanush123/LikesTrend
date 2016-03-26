@@ -100,12 +100,15 @@
             // Insert your code here
            }
       ); 
-      while(postsIDS.length!=responseSize){
-          console.log('working on IDs...');
-      }    
+//      while(postsIDS.length!=responseSize){
+//          console.log('working on IDs...');
+//      }    
       if(postsIDS.length==responseSize){
           console.log("going to dates methods now!");
           getFBPosts2();
+      } 
+      else{
+          console.log("I'm such a terrible coder...");
       }    
         
     }
