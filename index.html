@@ -96,21 +96,23 @@
             postsIDS[index] = postID;
             console.log("got post ID: "+postsIDS[index]);  
             index++;
-          }   
+          }  
+             console.log("postsIDS.length = "+postsIDS.length+", responseSize = "+responseSize);  
+               getFBPosts2();
             // Insert your code here
            }
       ); 
 //      while(postsIDS.length!=responseSize){
 //          console.log('working on IDs...');
 //      }    
-      if(postsIDS.length==responseSize){
-          console.log("going to dates methods now!");
-          getFBPosts2();
-      } 
-      else{
-          console.log("postsIDS.length = "+postsIDS.length+", responseSize = "+responseSize);
-          console.log("I'm such a terrible coder...");
-      }    
+//      if(postsIDS.length==responseSize){
+//          console.log("going to dates methods now!");
+//          getFBPosts2();
+//      } 
+//      else{
+//          console.log("postsIDS.length = "+postsIDS.length+", responseSize = "+responseSize);
+//          console.log("I'm such a terrible coder...");
+//      }    
         
     }
       function getFBPosts2() {
