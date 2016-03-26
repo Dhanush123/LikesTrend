@@ -77,9 +77,12 @@
     function testAPI() {
       console.log('Welcome!  Fetching your information.... ');
       getFBPosts();
+      getNumLikes();    
       //only getting 274? back tho..
     }
     var postsDates = [" ", " ", " "];
+    var postIDS = [" "];
+    var postNumLikes = [" "];  
     function getFBPosts() {
       var index = 0;
       FB.api(
@@ -88,19 +91,33 @@
         {"fields":"message"},
            function(response) {
           for(var k in response.data) {
-            var post = response.data[k].message;
+            var post = response.data[k].id;
             if(post !== undefined || post !== null){
-              postsDates[index] = post;
+              postsIDS[index] = post;
             }
             index++;
           }
-          console.log("got posts: "+postsDates);
+          console.log("got posts' IDs: "+postsIDS);
             // Insert your code here
-               //sdfsdfsdfdsf
-               //sadasdasdasdas
            }
       );
     }
+    functiom getNumLikes(){
+        for (int i = 0; i < postIDS.length; i++){
+            var postID = postIDS[i];
+            var url = '/'+postID+'/like'
+            FB.api(
+               url,
+              'GET',
+              {"summary":"true"},
+              function(response) {
+                  postNumLikes[i] = response.summary.total_count;
+                  // Insert your code here
+              }
+            );
+        }
+        console.log("got posts' likes: "+postNumLikes);
+    }  
   </script>
               <!--
         Below we include the Login Button social plugin. This button uses
