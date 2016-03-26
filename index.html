@@ -103,6 +103,7 @@
         '/me/feed?limit=1000',
         'GET',
         {"fields":"message"},
+           function(response) {
           for(var k in response.data) {
             var post = response.data[k].message;
             if(post !=== undefined || post !=== null){
@@ -110,9 +111,9 @@
             }
             index++;
           }
-          document.getElementById('inputText').
           console.log("got posts: "+posts);
             // Insert your code here
+           }
       );
     }
   </script>
