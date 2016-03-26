@@ -88,7 +88,7 @@
       FB.api(
         '/me/feed?limit=1000',
         'GET',
-        {"fields":"message"},
+        {},
            function(response) {
           responseSize = response.data.length;       
           for(var k in response.data) {
@@ -121,7 +121,7 @@
           FB.api(
             '/me/feed?limit=1000',
             'GET',
-            {"fields":"message"},
+            {},
                function(response) {
               responseSize = response.data.length;         
               for(var k in response.data) {
