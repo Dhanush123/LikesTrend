@@ -12,7 +12,9 @@
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
   <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> 
+  
+    <script type = "text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
 </head>
 
 
@@ -163,21 +165,9 @@
             );
         })(k);
     }
-                printLikes();
+        drawGraph();
     }
       
-    function printLikes(){
-            wait(5000); 
-            console.log("all likes count: "+postNumLikes);
-    } 
-      
-      function wait(ms){
-   var start = new Date().getTime();
-   var end = start;
-   while(end < start + ms) {
-     end = new Date().getTime();
-  }
-}
   </script>
               <!--
         Below we include the Login Button social plugin. This button uses
@@ -185,5 +175,44 @@
         the FB.login() function when clicked.
       -->  <fb:login-button scope="public_profile,email,user_posts" onlogin="checkLoginState();" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="false">
         </fb:login-button>
+    
+            <canvas id="myChart" width="400" height="400"></canvas>
+        <script>
+        function drawGraph() {    
+        var postDates = postsDates.slice();
+        
+        var postDates1 = [];
+        
+        for(var i in postDates) {
+            postDates1[i] = (postDates[i].substring(0,10));
+        }
+        
+        var postData = postNumLikes.slice();
+        
+        var dataS = {
+        labels: postDates1,
+        datasets: [
+            {
+                label: "Test Graph",
+                fillColor: "rgba(300,300,300,0.2)",
+                strokeColor: "rgba(100,141,142,1)",
+                pointColor: "rgba(220,100,0,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: postData
+            },  
+        ]
+    };
+        var ctx = document.getElementById("myChart").getContext("2d");
+        var myLineChart = new Chart(ctx).Line(dataS);
+        // Get context with jQuery - using jQuery's .get() method.
+        var ctx = $("#myChart").get(0).getContext("2d");
+        // This will get the first returned node in the jQuery collection.
+        var myNewChart = new Chart(ctx);
+        new Chart(ctx).Line(dataS, {
+                            scaleShowGridLines: false
+                            });
+        }
 </body>
     
