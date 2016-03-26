@@ -147,7 +147,7 @@
     function getNumLikes(){
         for (var i = 0; i < postsIDS.length; i++){
             var postID = postsIDS[i];
-            var url = '/'+postID+'/likes'
+            var url = '/'+postID+'/likes';
             FB.api(
                url,
               'GET',
