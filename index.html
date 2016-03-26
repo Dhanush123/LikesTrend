@@ -145,8 +145,8 @@
 //    }
       
     function getNumLikes(){
-        for (var i = 0; i < postsIDS.length; i++){
-            var postID = postsIDS[i];
+        for (var k in postID){
+            var postID = postsIDS[k];
             var url = '/'+postID+'/likes';
             FB.api(
                url,
@@ -154,8 +154,8 @@
               {"summary":"true"},
               function(response) {
                   console.log('response to likes API call: '+response);
-                  postNumLikes[i] = response.summary.total_count;
-                  console.log("postNumLikes["+i+"] = "+postNumLikes[i]);
+                  postNumLikes[k] = response.summary.total_count;
+                  console.log("postNumLikes["+i+"] = "+postNumLikes[k]);
                   // Insert your code here
               }
             );
