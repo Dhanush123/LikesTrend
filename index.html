@@ -116,25 +116,25 @@
         
     }
       function getFBPosts2() {
-      var responseSize = 0;
-      var index = 0;
-      FB.api(
-        '/me/feed?limit=1000',
-        'GET',
-        {"fields":"message"},
-           function(response) {
-          responseSize = response.data.length;         
-          for(var k in response.data) {
-            var postDate = response.data[k].created_time;  
-            postsDates[index] = postDate;
-            index++;
-          }  
-             console.log("postsDates.length = "+postsDates.length+", responseSize = "+responseSize);  
-             getNumLikes();         
-            // Insert your code here
-           }
-      ); 
-          
+          var responseSize = 0;
+          var index = 0;
+          FB.api(
+            '/me/feed?limit=1000',
+            'GET',
+            {"fields":"message"},
+               function(response) {
+              responseSize = response.data.length;         
+              for(var k in response.data) {
+                var postDate = response.data[k].created_time;  
+                postsDates[index] = postDate;
+                index++;
+              }  
+                 console.log("postsDates.length = "+postsDates.length+", responseSize = "+responseSize);  
+                 getNumLikes();         
+                // Insert your code here
+               }
+          ); 
+      }
 //      while(postsDates.length!=responseSize){
 //          console.log('working on dates...');
 //      }    
