@@ -156,11 +156,17 @@
                   console.log('response to likes API call: '+response);
                   postNumLikes[k] = response.summary.total_count;
                   console.log("postNumLikes["+k+"] = "+postNumLikes[k]);
-                  console.log("all likes count: "+postNumLikes);
+                                  printLikes();
                   // Insert your code here
               }
             );
         }
+        printLikes();
+    }
+      
+    fuction printLikes(){
+            wait(5000); 
+            console.log("all likes count: "+postNumLikes);
     }  
   </script>
               <!--
