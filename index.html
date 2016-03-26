@@ -166,19 +166,11 @@
         })(k);
     }
         drawGraph();
+        console.log("going to draw graph now...");
     }
       
-  </script>
-              <!--
-        Below we include the Login Button social plugin. This button uses
-        the JavaScript SDK to present a graphical Login button that triggers
-        the FB.login() function when clicked.
-      -->  <fb:login-button scope="public_profile,email,user_posts" onlogin="checkLoginState();" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="false">
-        </fb:login-button>
-    
-            <canvas id="myChart" width="400" height="400"></canvas>
-        <script>
-        function drawGraph() {    
+      function drawGraph() {   
+        console.log("inside graph method now");  
         var postDates = postsDates.slice();
         
         var postDates1 = [];
@@ -214,5 +206,17 @@
                             scaleShowGridLines: false
                             });
         }
+      
+  </script>
+              <!--
+        Below we include the Login Button social plugin. This button uses
+        the JavaScript SDK to present a graphical Login button that triggers
+        the FB.login() function when clicked.
+      -->  <fb:login-button scope="public_profile,email,user_posts" onlogin="checkLoginState();" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="false">
+        </fb:login-button>
+    
+            <canvas id="myChart" width="400" height="400"></canvas>
+        <script>
+    
 </body>
     
