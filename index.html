@@ -101,11 +101,8 @@
             // Insert your code here
            }
       ); 
+        setTimeout(getNumLikes,10000);
     }
-      
-      $.when($.ajax(getFBPosts)).then(function () {
-    getNumLikes();
-});
       
     function getNumLikes(){
         for (var i = 0; i < postsIDS.length; i++){
