@@ -176,7 +176,7 @@
       
       function drawGraph() {   
         console.log("inside graph method now");  
-        var postDates = postsDates.slice();
+        var postDates = postsDates.slice(0);
         
         var postDates1 = [];
         
@@ -184,7 +184,8 @@
             postDates1[i] = (postDates[i].substring(0,10));
         }
         
-        var postData = postNumLikes.slice();
+        var postData = postNumLikes.slice(0);
+        console.log("likes to be used in graph: "+postData)  
         
         var dataS = {
         labels: postDates1,
