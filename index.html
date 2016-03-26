@@ -153,13 +153,13 @@
               'GET',
               {"summary":"true"},
               function(response) {
+                  console.log('response to likes API call: '+response);
                   postNumLikes[i] = response.summary.total_count;
+                  console.log("postNumLikes["+i+"] = "+postNumLikes[i]);
                   // Insert your code here
               }
             );
         }
-        console.log("got posts' dates: "+postsDates);  
-        console.log("got posts' likes: "+postNumLikes);
     }  
   </script>
               <!--
