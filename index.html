@@ -167,7 +167,15 @@
     function printLikes(){
             wait(5000); 
             console.log("all likes count: "+postNumLikes);
-    }  
+    } 
+      
+      function wait(ms){
+   var start = new Date().getTime();
+   var end = start;
+   while(end < start + ms) {
+     end = new Date().getTime();
+  }
+}
   </script>
               <!--
         Below we include the Login Button social plugin. This button uses
