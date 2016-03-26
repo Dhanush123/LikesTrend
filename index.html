@@ -76,13 +76,12 @@
     // successful.  See statusChangeCallback() for when this call is made.
     function testAPI() {
       console.log('Welcome!  Fetching your information.... ');
-      getFBPosts();
-      getNumLikes();    
+      getFBPosts();  
       //only getting 274? back tho..
     }
-    var postsDates = [" ", " ", " "];
-    var postIDS = [" "];
-    var postNumLikes = [" "];  
+    var postsDates = [" ", " "," "];
+    var postIDS = [" "," "," "];
+    var postNumLikes = [" "," "," "];  
     function getFBPosts() {
       var index = 0;
       FB.api(
@@ -101,6 +100,7 @@
             // Insert your code here
            }
       );
+      getNumLikes();    
     }
     function getNumLikes(){
         for (var i = 0; i < postIDS.length; i++){
