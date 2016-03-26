@@ -18,9 +18,9 @@
 
 <body>
   <script>
-    var postsDates = ["sadasddsf", "asdasdsdf", "asdasddsf"];
-    var postsIDS = ["sadasddsf", "sadasddsf", "sadasddsf"];
-    var postNumLikes = ["sadasddsf", "sadasddsf", "sadasddsf"]; 
+    var postsDates = [];
+    var postsIDS = [];
+    var postNumLikes = []; 
       
   window.fbAsyncInit = function() {
     FB.init({
@@ -157,10 +157,10 @@
                   postNumLikes[i] = response.summary.total_count;
                   console.log("postNumLikes["+i+"] = "+postNumLikes[i]);
                   // Insert your code here
-                  console.log("all likes count: "+postNumLikes);
               }
             );
         }
+        console.log("all likes count: "+postNumLikes);
     }  
   </script>
               <!--
