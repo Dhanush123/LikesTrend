@@ -92,7 +92,7 @@
           for(var k in response.data) {
             var postID = response.data[k].id;
             var postDate = response.data[k].created_time;  
-            if(post !== undefined || post !== null){
+            if(postID !== undefined || postID !== null){
               postsIDS[index] = postID;
               postsDates[index] = postDate;
             }
