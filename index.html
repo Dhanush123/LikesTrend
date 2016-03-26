@@ -91,17 +91,32 @@
            function(response) {
           for(var k in response.data) {
             var postID = response.data[k].id;
-            var postDate = response.data[k].created_time;  
             postsIDS[index] = postID;
+            index++;
+          }
+          console.log("got posts' IDs: "+postsIDS);     
+            // Insert your code here
+           }
+      ); 
+        getFBPosts2();
+    }
+      function getFBPosts2() {
+      var index = 0;
+      FB.api(
+        '/me/feed?limit=1000',
+        'GET',
+        {"fields":"message"},
+           function(response) {
+          for(var k in response.data) {
+            var postDate = response.data[k].created_time;  
             postsDates[index] = postDate;
             index++;
           }
-          console.log("got posts' IDs: "+postsIDS);
           console.log("got posts' dates: "+postsDates);       
             // Insert your code here
            }
       ); 
-        setTimeout(getNumLikes,10000);
+        getNumLikes();
     }
       
     function getNumLikes(){
@@ -118,6 +133,7 @@
               }
             );
         }
+        console.log("got posts' dates?: "+postsDates);  
         console.log("got posts' likes: "+postNumLikes);
     }  
   </script>
