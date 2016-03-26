@@ -92,19 +92,21 @@
           for(var k in response.data) {
             var postID = response.data[k].id;
             var postDate = response.data[k].created_time;  
-            if(postID !== undefined || postID !== null){
-              postsIDS[index] = postID;
-              postsDates[index] = postDate;
-            }
+            postsIDS[index] = postID;
+            postsDates[index] = postDate;
             index++;
           }
           console.log("got posts' IDs: "+postsIDS);
           console.log("got posts' dates: "+postsDates);       
             // Insert your code here
            }
-      );
-      getNumLikes();    
+      ); 
     }
+      
+      $.when($.ajax(getFBPosts)).then(function () {
+    getNumLikes();
+});
+      
     function getNumLikes(){
         for (var i = 0; i < postsIDS.length; i++){
             var postID = postsIDS[i];
