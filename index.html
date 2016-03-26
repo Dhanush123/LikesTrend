@@ -148,7 +148,7 @@
         for (var k = 0; k < postsIDS.length; k++){
             var postID = postsIDS[k];
             var url = '/'+postID+'/likes';
-            FB.api(
+            (function(k) {FB.api(
                url,
               'GET',
               {"summary":"true"},
@@ -159,7 +159,7 @@
                   // Insert your code here
               }
             );
-        }
+        })(k);
         printLikes();
     }
       
