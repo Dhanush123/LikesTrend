@@ -181,12 +181,19 @@
     }    
     setTimeout(drawGraph,20000);
     }
+      Chart.defaults.global = {
+          showScale: true,
+          responsive: true,
+          maintainAspectRatio: false,
+          
+      };
       
       
       function drawGraph() {   
         console.log("inside graph method now"); 
-
-        var postDates = postsDates.slice(0,100);
+        
+        postsDates.reverse();  
+        var postDates = postsDates.slice(0);
         
         var postDates1 = [];
         
@@ -194,7 +201,8 @@
             postDates1[i] = (postDates[i].substring(0,10));
         }
         
-        var postData = postNumLikes.slice(0,100);
+        postNumLikes.reverse();  
+        var postData = postNumLikes.slice(0);
         console.log("likes to be used in graph: "+postData);  
         
         var dataS = {
@@ -212,6 +220,12 @@
                 pointDot : true,
                 scaleGridLineWidth : 3,
                 pointDotRadius : 1,
+                scaleShowHorizontalLines: false,
+                scaleShowVerticalLines: false,
+                bezierCurve : true,
+                pointDotStrokeWidth : 1,
+                datasetStroke : true,
+                datasetStrokeWidth : 1,
                 data: postData
             },  
         ]
@@ -235,7 +249,7 @@
       -->  <fb:login-button scope="public_profile,email,user_posts" onlogin="checkLoginState();" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="false">
         </fb:login-button>
     
-            <canvas id="myChart" width="1024" height="768"></canvas>
+            <canvas id="myChart" width="1920" height="1080"></canvas>
     
 </body>
     
