@@ -158,7 +158,6 @@ Object.observe(postNumLikes, function(changes) {
             (function(k) {
             var postID = postsIDS[k];
             var url = '/'+postID+'/likes';
-                
                FB.api(
                url,
               'GET',
@@ -177,11 +176,15 @@ Object.observe(postNumLikes, function(changes) {
             );
         })(k);
     }
+     drawGraph();     
     }
       
       
       function drawGraph() {   
-        console.log("inside graph method now");  
+        console.log("inside graph method now"); 
+        while(postNumLikes.length!=275){
+            console.log("likes still probably being retrieved...");
+        }  
         var postDates = postsDates.slice(0);
         
         var postDates1 = [];
@@ -227,7 +230,7 @@ Object.observe(postNumLikes, function(changes) {
       -->  <fb:login-button scope="public_profile,email,user_posts" onlogin="checkLoginState();" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="false">
         </fb:login-button>
     
-            <canvas id="myChart" width="1920" height="1080"></canvas>
+            <canvas id="myChart" width="500" height="500"></canvas>
         <script>
     
 </body>
