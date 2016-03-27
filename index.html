@@ -183,7 +183,9 @@ Object.observe(postNumLikes, function(changes) {
       function drawGraph() {   
         console.log("inside graph method now"); 
         while(postNumLikes.length!=275){
+            if(postNumLikes.length%5==0){
             console.log("likes still probably being retrieved...likesarraylength= "+postNumLikes.length);
+            }
         }  
         var postDates = postsDates.slice(0);
         
