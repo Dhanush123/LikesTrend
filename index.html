@@ -202,34 +202,29 @@
         console.log("# likes to be used in graph: "+postData.length);  
         console.log("likes to be used in graph: "+postData);  
         
-        var dataS = {
-        labels: postDates1,
-        datasets: [
-            {
-            label: "Likes Trend Graph",
-            fillColor: "rgba(220,220,220,0.2)",
-            strokeColor: "rgba(220,220,220,1)",
-            pointColor: "rgba(220,220,220,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
-            pointDot : false,
-            datasetStroke : true,
-            datasetStrokeWidth : 2,
-            datasetFill : true,
-            data: postData
-            },  
-        ]
-    };
-        var ctx = document.getElementById("myChart").getContext("2d");
-        var myLineChart = new Chart(ctx).Line(dataS);
-        // Get context with jQuery - using jQuery's .get() method.
-        var ctx = $("#myChart").get(0).getContext("2d");
-        // This will get the first returned node in the jQuery collection.
-        var myNewChart = new Chart(ctx);
-        new Chart(ctx).Line(dataS, {
-                            scaleShowGridLines: false
-                            });
+		var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+		var lineChartData = {
+			labels :postDates1,
+			datasets : [
+				{
+					label: "My First dataset",
+					fillColor : "rgba(220,220,220,0.2)",
+					strokeColor : "rgba(220,220,220,1)",
+					pointColor : "rgba(220,220,220,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(220,220,220,1)",
+					data : postData,
+                    showXLabels: 20
+				},
+			]
+		}
+	window.onload = function(){
+		var ctx = document.getElementById("canvas").getContext("2d");
+		window.myLine = new Chart(ctx).Line(lineChartData, {
+			responsive: true
+		});
+	}
         }
       
   </script>
@@ -240,7 +235,7 @@
       -->  <fb:login-button scope="public_profile,email,user_posts" onlogin="checkLoginState();" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="false">
         </fb:login-button>
     
-            <canvas id="myChart" width="1920" height="1080"></canvas>
+            <canvas id="canvas" width="600" height="450"></canvas>
     
 </body>
     
