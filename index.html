@@ -182,7 +182,7 @@
       function drawGraph() {   
         console.log("inside graph method now"); 
 
-        var postDates = postsDates.slice(0,50);
+        var postDates = postsDates.slice(0);
         
         var postDates1 = [];
         
@@ -190,7 +190,7 @@
             postDates1[i] = (postDates[i].substring(0,10));
         }
         
-        var postData = postNumLikes.slice(0,50);
+        var postData = postNumLikes.slice(0);
         console.log("likes to be used in graph: "+postData);  
         
         var dataS = {
@@ -229,7 +229,7 @@
       -->  <fb:login-button scope="public_profile,email,user_posts" onlogin="checkLoginState();" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="false">
         </fb:login-button>
     
-            <canvas id="myChart" width="500" height="500"></canvas>
+            <canvas id="myChart" width="1024" height="768"></canvas>
     
 </body>
     
