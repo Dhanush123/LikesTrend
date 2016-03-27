@@ -181,13 +181,6 @@
     }    
     setTimeout(drawGraph,20000);
     }
-      Chart.defaults.global = {
-          showScale: true,
-          responsive: true,
-          maintainAspectRatio: false,
-          
-      };
-      
       
       function drawGraph() {   
         console.log("inside graph method now"); 
@@ -226,6 +219,9 @@
                 pointDotStrokeWidth : 1,
                 datasetStroke : true,
                 datasetStrokeWidth : 1,
+                showScale: true,
+                responsive: true,
+                maintainAspectRatio: false,
                 data: postData
             },  
         ]
