@@ -179,7 +179,7 @@
             );
         })(k);
     }    
-    setTimeout(drawGraph,20000);
+    setTimeout(drawGraph,15000);
     }
       
       function drawGraph() {   
@@ -193,36 +193,31 @@
         for(var i in postDates) {
             postDates1[i] = (postDates[i].substring(0,10));
         }
+        console.log("# dates to be used in graph: "+postDates1.length);  
+        console.log("dates to be used in graph: "+postDates1);          
+          
         
         postNumLikes.reverse();  
         var postData = postNumLikes.slice(0);
+        console.log("# likes to be used in graph: "+postData.length);  
         console.log("likes to be used in graph: "+postData);  
         
         var dataS = {
         labels: postDates1,
         datasets: [
             {
-                label: "Test Graph",
-                fillColor: "rgba(300,300,300,0.2)",
-                strokeColor: "rgba(100,141,142,1)",
-                pointColor: "rgba(220,100,0,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(220,220,220,1)",
-                datasetFill : true,
-                pointDot : true,
-                scaleGridLineWidth : 3,
-                pointDotRadius : 1,
-                scaleShowHorizontalLines: false,
-                scaleShowVerticalLines: false,
-                bezierCurve : true,
-                pointDotStrokeWidth : 1,
-                datasetStroke : true,
-                datasetStrokeWidth : 1,
-                showScale: true,
-                responsive: true,
-                maintainAspectRatio: false,
-                data: postData
+            label: "Likes Trend Graph",
+            fillColor: "rgba(220,220,220,0.2)",
+            strokeColor: "rgba(220,220,220,1)",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            pointDot : false,
+            datasetStroke : true,
+            datasetStrokeWidth : 2,
+            datasetFill : true,
+            data: postData
             },  
         ]
     };
