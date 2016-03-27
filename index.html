@@ -215,16 +215,14 @@
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(220,220,220,1)",
                     showXLabels: 20,
-					data : postData,
-				}
+					data : postData
+				},
 			]
 		}
-	window.onload = function(){
 		var ctx = document.getElementById("canvas").getContext("2d");
 		window.myLine = new Chart(ctx).Line(lineChartData, {
 			responsive: true
 		});
-	}
         }
       
   </script>
