@@ -204,7 +204,7 @@
         
 		var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
 		var lineChartData = {
-			labels :postDates1,
+			labels : postDates1,
 			datasets : [
 				{
 					label: "My First dataset",
@@ -214,9 +214,9 @@
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(220,220,220,1)",
+                    showXLabels: 20,
 					data : postData,
-                    showXLabels: 20
-				},
+				}
 			]
 		}
 	window.onload = function(){
