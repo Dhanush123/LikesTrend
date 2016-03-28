@@ -19,6 +19,34 @@
 
 
 <body>
+    
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Likes Trend</a>
+        </div>
+    </nav>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Find out how popular you are on Facebook!</h1>
+        <p>Simply click the Facebook "Log In" button, wait no more than 30 seconds on average, and a graph will appear showing the likes across the last 275 posts on your wall (both the ones made by you and the ones you were tagged in). Enjoy!</p>
+                      <!--
+        Below we include the Login Button social plugin. This button uses
+        the JavaScript SDK to present a graphical Login button that triggers
+        the FB.login() function when clicked.
+      -->  <fb:login-button scope="public_profile,email,user_posts" onlogin="checkLoginState();" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="false">
+        </fb:login-button>
+    
+      </div>
+    </div>
   <script>
     var postsDates = [];
     var postsIDS = [];
@@ -226,13 +254,6 @@
         }
       
   </script>
-              <!--
-        Below we include the Login Button social plugin. This button uses
-        the JavaScript SDK to present a graphical Login button that triggers
-        the FB.login() function when clicked.
-      -->  <fb:login-button scope="public_profile,email,user_posts" onlogin="checkLoginState();" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="false">
-        </fb:login-button>
-    
             <canvas id="canvas" width="600" height="450"></canvas>
     
 </body>
