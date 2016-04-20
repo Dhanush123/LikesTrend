@@ -145,7 +145,10 @@
             // Insert your code here
            }
       ); 
-
+        
+    }
+    
+      
     function getNumLikes(){
         for (var k = 0; k < postsIDS.length; k++){
             (function(k) {
@@ -156,7 +159,7 @@
               'GET',
               {"summary":"true"},
               function(response) {
-                  //console.log('response to likes API call: '+response);
+                  console.log('response to likes API call: '+response);
                   if(response.summary.total_count==undefined){
                                           postNumLikes[k] = 0;  
                    }
@@ -164,6 +167,7 @@
                        postNumLikes[k] = response.summary.total_count;
                   }
                   console.log("postNumLikes["+k+"] = "+postNumLikes[k]);
+                  // Insert your code here
               }
             );
         })(k);
