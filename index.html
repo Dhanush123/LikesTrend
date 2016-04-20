@@ -134,56 +134,18 @@
           for(var k in response.data) {
             var postID = response.data[k].id;
             postsIDS[index] = postID;
+            var postDate = response.data[k].created_time;  
+            postsDates[index] = postDate;
             console.log("got post ID: "+postsIDS[index]);  
             index++;
           }  
-             console.log("postsIDS.length = "+postsIDS.length+", responseSize = "+responseSize);  
-             getFBPosts2();
+             console.log("postsIDS.length = "+postsIDS.length+", responseSize = "+responseSize);
+             console.log("postsDates.length = "+postsDates.length+", responseSize = "+responseSize);  
+             getNumLikes();
             // Insert your code here
            }
       ); 
-//      while(postsIDS.length!=responseSize){
-//          console.log('working on IDs...');
-//      }    
-//      if(postsIDS.length==responseSize){
-//          console.log("going to dates methods now!");
-//          getFBPosts2();
-//      } 
-//      else{
-//          console.log("postsIDS.length = "+postsIDS.length+", responseSize = "+responseSize);
-//          console.log("I'm such a terrible coder...");
-//      }    
-        
-    }
-      function getFBPosts2() {
-          var responseSize = 0;
-          var index = 0;
-          FB.api(
-            '/me/feed?limit=1000',
-            'GET',
-            {},
-               function(response) {
-              responseSize = response.data.length;         
-              for(var k in response.data) {
-                var postDate = response.data[k].created_time;  
-                postsDates[index] = postDate;
-                index++;
-              }  
-                 console.log("postsDates.length = "+postsDates.length+", responseSize = "+responseSize);  
-                 getNumLikes();         
-                // Insert your code here
-               }
-          ); 
-      }
-//      while(postsDates.length!=responseSize){
-//          console.log('working on dates...');
-//      }    
-//      if(postsDates.length==responseSize){
-//          console.log("going to likes methods now!");
-//          getNumLikes();
-//      }       
-//    }
-      
+
     function getNumLikes(){
         for (var k = 0; k < postsIDS.length; k++){
             (function(k) {
@@ -194,7 +156,7 @@
               'GET',
               {"summary":"true"},
               function(response) {
-                  console.log('response to likes API call: '+response);
+                  //console.log('response to likes API call: '+response);
                   if(response.summary.total_count==undefined){
                                           postNumLikes[k] = 0;  
                    }
@@ -202,7 +164,6 @@
                        postNumLikes[k] = response.summary.total_count;
                   }
                   console.log("postNumLikes["+k+"] = "+postNumLikes[k]);
-                  // Insert your code here
               }
             );
         })(k);
