@@ -119,7 +119,7 @@
     // successful.  See statusChangeCallback() for when this call is made.
     function testAPI() {
       console.log('Welcome!  Fetching your information.... ');
-      var initParam1 = '/me/feed?limit=200';
+      var initParam1 = '/me/feed?limit=1000';
       getFBPosts(initParam1);      
       //only getting 274? back tho..
     } 
@@ -172,7 +172,13 @@
       var morePosts;
       var nextLinkParam;    
           console.log("paging stuff: "+response.paging);      
-          typeof response.paging.next=="undefined" ? morePosts = false : (morePosts = true,nextLinkParam=response.paging.next);
+          if(typeof response.paging.next=="undefined"){
+              morePosts = false;
+          }
+          else{
+              morePosts = true;
+              extLinkParam=response.paging.next;
+          }
                 
           responseSize = response.data.length;       
           for(var k in response.data) {
