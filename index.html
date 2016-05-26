@@ -146,8 +146,7 @@
     function dateDiff(d1, d2) {
       var diffTime = Math.abs(d1.getTime() - d2.getTime());
       var diffDays = Math.ceil(diffTime / (1000 * 3600 * 24)); 
-        
-       if (diffDays<365)    
+      
         console.log("Days diff b/w these posts: "+diffDays); 
         
        return diffDays;    
@@ -187,9 +186,9 @@
             var postDate = response.data[k].created_time.substring(5,7);
             var postMonth = response.data[k].created_time.substring(8,10);
             var postD = new Date(postYear,postMonth,postDate);  
+            console.log("Date of post: "+postD.toDateString()); 
            // if(postYear==(todayD.getYear)||postYear==(todayD.getYear-1)){  
-                if(dateDiff(todayD,postD)<=365){  
-                    console.log("Date of post: "+postDate+"/"+postMonth+"/"+postYear);  
+                if(dateDiff(todayD,postD)<=365){   
                     var postID = response.data[k].id;
                     postsIDS[index] = postID;
                     postsDates[index] = response.data[k].created_time;
