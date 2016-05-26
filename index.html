@@ -102,10 +102,10 @@
     //
     // These three cases are handled in the callback function.
       
-          FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  };
+     FB.getLoginStatus(function(response) {
+          statusChangeCallback(response);
+        });
+     };
       
         (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
@@ -119,7 +119,8 @@
     // successful.  See statusChangeCallback() for when this call is made.
     function testAPI() {
       console.log('Welcome!  Fetching your information.... ');
-      getFBPosts();      
+      var initParam1 = '/me/feed?limit=200';  
+      getFBPosts(initParam1);      
       //only getting 274? back tho..
     } 
     
@@ -140,7 +141,7 @@
         var todayNew = new Date(year,month,date);  
         console.log("Today's date: "+todayNew.toDateString());
         return todayNew;
-     }
+    }
       
     function dateDiff(d1, d2) {
        var diff = (Math.abs(d1.getTime() - d2.getTime()))/ (1000 * 60 * 60 * 24);
@@ -148,16 +149,34 @@
        return diff;    
     }
       
-    function getFBPosts() {
+    var gotPostsOnce = false;
+      
+    function getFBPosts(paramPass) {
         
       var todayD = getCurrentDate();
       var responseSize = 0;
       var index = 0;
+      var morePosts;
+      var nextLinkParam;    
       FB.api(
-        '/me/feed?limit=1000',
+        paramPass,
         'GET',
         {},
-          function(response) {
+          function(response) { 
+                parsePosts(response);
+           });  
+    }
+           
+    function parsePosts(response) {
+        
+      var todayD = getCurrentDate();
+      var responseSize = 0;
+      var index = 0;
+      var morePosts;
+      var nextLinkParam;    
+              
+          response.paging.next==undefined ? morePosts = false : (morePosts = true,nextLinkParam=response.paging.next);
+                
           responseSize = response.data.length;       
           for(var k in response.data) {
               
@@ -174,12 +193,17 @@
                 index++;
             }  
            }    
-             console.log("postsIDS.length = "+postsIDS.length+", responseSize = "+responseSize);  
-             console.log("postsDates.length = "+postsDates.length+", responseSize = "+responseSize);  
-             getNumLikes();  
-           }); 
+        
+              if(morePosts==false){
+                  console.log("postsIDS.length = "+postsIDS.length+", responseSize = "+responseSize);  
+                  console.log("postsDates.length = "+postsDates.length+", responseSize = "+responseSize);
+                  getNumLikes(); 
+              }
+              else{
+                  getFBPosts(nextLinkParam);
+              } 
     }
-
+      
     function getNumLikes(){
         for (var k = 0; k < postsIDS.length; k++){
             (function(k) {
@@ -192,13 +216,12 @@
               function(response) {
                   console.log('response to likes API call: '+response);
                   if(response.summary.total_count==undefined){
-                                          postNumLikes[k] = 0;  
+                         postsDates.splice(k,1); //just don't even display that post then
                    }
                   else{
                        postNumLikes[k] = response.summary.total_count;
                   }
                   console.log("postNumLikes["+k+"] = "+postNumLikes[k]);
-                  // Insert your code here
               }
             );
         })(k);
