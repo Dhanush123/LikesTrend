@@ -154,7 +154,7 @@
       var responseSize = 0;
       var index = 0;
       FB.api(
-        '/me/feed',
+        '/me/feed?limit=1000',
         'GET',
         {},
           function(response) {
@@ -179,25 +179,6 @@
              getNumLikes();  
            }); 
     }
-          
-      function getFBPosts2() {
-          var responseSize = 0;
-          var index = 0;
-          FB.api(
-            '/me/feed?limit=1000',
-            'GET',
-            {},
-               function(response) {
-              responseSize = response.data.length;         
-              for(var k in response.data) {
-                var postDate = response.data[k].created_time;  
-                postsDates[index] = postDate;
-                index++;
-              }  
-     
-               }
-          ); 
-      }
 
     function getNumLikes(){
         for (var k = 0; k < postsIDS.length; k++){
