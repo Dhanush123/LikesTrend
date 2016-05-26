@@ -187,14 +187,16 @@
             var postDate = response.data[k].created_time.substring(5,7);
             var postMonth = response.data[k].created_time.substring(8,10);
             var postD = new Date(postYear,postMonth,postDate);  
-            if(dateDiff(todayD,postD)<=365){  
-                console.log("Date of post: "+postDate+"/"+postMonth+"/"+postYear);  
-                var postID = response.data[k].id;
-                postsIDS[index] = postID;
-                postsDates[index] = response.data[k].created_time;
-                console.log("got post ID: "+postsIDS[index]);  
-                index++;
-            }  
+            if(postYear==(todayD.getYear)||postYear==(todayD.getYear-1)){  
+                if(dateDiff(todayD,postD)<=365){  
+                    console.log("Date of post: "+postDate+"/"+postMonth+"/"+postYear);  
+                    var postID = response.data[k].id;
+                    postsIDS[index] = postID;
+                    postsDates[index] = response.data[k].created_time;
+                    console.log("got post ID: "+postsIDS[index]);  
+                    index++;
+                }
+            }
            }    
         
               if(morePosts==false){
