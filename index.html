@@ -124,7 +124,6 @@
     } 
     
     function getCurrentDate(){
-         var today = new Date();
          var date = today.getDate();
          var month = today.getMonth()+1; 
          var year = today.getFullYear();
@@ -137,12 +136,14 @@
             month='0'+month;
          } 
           
-        return new Date(year+"-"+date+"-"+month);  
+        var today = new Date(year+"-"+date+"-"+month);  
+        return today;
+        console.log("Today's date: "+today.getUTCDate);
      }
       
     function dateDiff(d1, d2) {
-       var timeDiff = Math.abs(d1.getTime() - d2.getTime());
-       return timeDiff / (1000 * 60 * 60 * 24);
+       var diff = (Math.abs(d1.getTime() - d2.getTime()))/ (1000 * 60 * 60 * 24);
+       console.log("Days diff b/w these posts: "+diff);    
     }
       
     function getFBPosts() {
@@ -154,12 +155,12 @@
         '/me/feed?limit=1000',
         'GET',
         {},
-           function(response) {
+          function(response) {
           responseSize = response.data.length;       
           for(var k in response.data) {
               
             var postDate = new Date(response.data[k].created_time.substring(0,10));
-              
+            console.log("Date of post: "+postDate.getUTCDate);  
             if(dateDiff(currentDate,postDate)<=365){  
                 var postID = response.data[k].id;
                 postsIDS[index] = postID;
