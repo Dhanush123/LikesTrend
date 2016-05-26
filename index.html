@@ -172,7 +172,7 @@
       var morePosts;
       var nextLinkParam;    
           console.log("paging stuff: "+response.paging);      
-          if(typeof response.paging.next=="undefined"){
+          if(typeof response=="undefined"){
               morePosts = false;
           }
           else{
