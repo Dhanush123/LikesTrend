@@ -129,15 +129,15 @@
          var month = today.getMonth()+1; 
          var year = today.getFullYear();
 
-         if(dd<10) {
-            dd='0'+dd;
+         if(date<10) {
+            date='0'+date;
          } 
 
-         if(mm<10) {
-            mm='0'+mm;
+         if(month<10) {
+            month='0'+month;
          } 
           
-        return new Date(year+"-"+date+"-"+day);  
+        return new Date(year+"-"+date+"-"+month);  
      }
       
     function dateDiff(d1, d2) {
