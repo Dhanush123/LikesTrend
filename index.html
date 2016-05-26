@@ -165,33 +165,21 @@
             var postDate = response.data[k].created_time.substring(5,7);
             var postMonth = response.data[k].created_time.substring(8,10);
             var postD = new Date(postYear,postMonth,postDate);  
-            console.log("Date of post: "+postDate+","+postMonth+","+postYear);  
+            console.log("Date of post: "+postDate+"/"+postMonth+"/"+postYear);  
             if(dateDiff(todayD,postD)<=365){  
                 var postID = response.data[k].id;
                 postsIDS[index] = postID;
+                postsDates[index] = response.data[k].created_time;
                 console.log("got post ID: "+postsIDS[index]);  
                 index++;
-            }
-              
-           }  
+            }  
+           }    
              console.log("postsIDS.length = "+postsIDS.length+", responseSize = "+responseSize);  
-             getFBPosts2();
-            // Insert your code here
-           }
-      ); 
-//      while(postsIDS.length!=responseSize){
-//          console.log('working on IDs...');
-//      }    
-//      if(postsIDS.length==responseSize){
-//          console.log("going to dates methods now!");
-//          getFBPosts2();
-//      } 
-//      else{
-//          console.log("postsIDS.length = "+postsIDS.length+", responseSize = "+responseSize);
-//          console.log("I'm such a terrible coder...");
-//      }    
-        
+             console.log("postsDates.length = "+postsDates.length+", responseSize = "+responseSize);  
+             getNumLikes();  
+           } 
     }
+          
       function getFBPosts2() {
           var responseSize = 0;
           var index = 0;
@@ -206,21 +194,11 @@
                 postsDates[index] = postDate;
                 index++;
               }  
-                 console.log("postsDates.length = "+postsDates.length+", responseSize = "+responseSize);  
-                 getNumLikes();         
-                // Insert your code here
+     
                }
           ); 
       }
-//      while(postsDates.length!=responseSize){
-//          console.log('working on dates...');
-//      }    
-//      if(postsDates.length==responseSize){
-//          console.log("going to likes methods now!");
-//          getNumLikes();
-//      }       
-//    }
-      
+
     function getNumLikes(){
         for (var k = 0; k < postsIDS.length; k++){
             (function(k) {
