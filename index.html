@@ -145,7 +145,7 @@
       
     function dateDiff(d1, d2) {
       var diffTime = Math.abs(d1.getTime() - d2.getTime());
-      var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+      var diffDays = Math.ceil(diffTime / (1000 * 3600 * 24)); 
         
        if (diffDays<365)    
         console.log("Days diff b/w these posts: "+diffDays); 
