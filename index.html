@@ -171,7 +171,7 @@
       var index = 0;
       var morePosts;
       var nextLinkParam;    
-              
+          console.log("paging stuff: "+response.paging);      
           typeof response.paging.next=="undefined" ? morePosts = false : (morePosts = true,nextLinkParam=response.paging.next);
                 
           responseSize = response.data.length;       
