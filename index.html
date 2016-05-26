@@ -145,19 +145,17 @@
       
     function dateDiff(d1, d2) {
        var diff = (Math.abs(d1.getTime() - d2.getTime()))/ (1000 * 60 * 60 * 24);
-       console.log("Days diff b/w these posts: "+diff);    
+        
+       (if diff<365)    
+        console.log("Days diff b/w these posts: "+diff); 
+        
        return diff;    
     }
       
     var gotPostsOnce = false;
       
     function getFBPosts(paramPass) {
-        
-      var todayD = getCurrentDate();
-      var responseSize = 0;
-      var index = 0;
-      var morePosts;
-      var nextLinkParam;    
+    
       FB.api(
         paramPass,
         'GET',
