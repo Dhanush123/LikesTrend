@@ -138,8 +138,8 @@
          } 
           
         var todayNew = new Date(year,month,date);  
-        return todayNew;
         console.log("Today's date: "+todayNew.toDateString());
+        return todayNew;
      }
       
     function dateDiff(d1, d2) {
@@ -154,7 +154,7 @@
       var responseSize = 0;
       var index = 0;
       FB.api(
-        '/me/feed?limit=1000',
+        '/me/feed',
         'GET',
         {},
           function(response) {
