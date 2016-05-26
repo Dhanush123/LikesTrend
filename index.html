@@ -172,7 +172,7 @@
       var morePosts;
       var nextLinkParam;    
               
-          response.paging.next==undefined ? morePosts = false : (morePosts = true,nextLinkParam=response.paging.next);
+          typeof response.paging.next=="undefined" ? morePosts = false : (morePosts = true,nextLinkParam=response.paging.next);
                 
           responseSize = response.data.length;       
           for(var k in response.data) {
