@@ -137,9 +137,9 @@
             month='0'+month;
          } 
           
-        var todayNew = new Date(year+"-"+date+"-"+month);  
+        var todayNew = new Date(year,date,month);  
         return todayNew;
-        console.log("Today's date: "+todayNew.toDateString());
+        console.log("Today's date: "+todayNew.toDateString);
      }
       
     function dateDiff(d1, d2) {
@@ -150,7 +150,7 @@
       
     function getFBPosts() {
         
-      var currentDate = getCurrentDate();
+      var todayD = getCurrentDate();
       var responseSize = 0;
       var index = 0;
       FB.api(
@@ -161,9 +161,12 @@
           responseSize = response.data.length;       
           for(var k in response.data) {
               
-            var postDate = new Date(response.data[k].created_time.substring(0,10));
+            var postYear = response.data[k].created_time.substring(0,4);
+            var postDate = response.data[k].created_time.substring(5,7);
+            var postMonth = response.data[k].created_time.substring(8,10);
+            var postD = new Date(postYear,postDate,postMonth);  
             console.log("Date of post: "+postDate.toDateString());  
-            if(dateDiff(currentDate,postDate)<=365){  
+            if(dateDiff(todayD,postD)<=365){  
                 var postID = response.data[k].id;
                 postsIDS[index] = postID;
                 console.log("got post ID: "+postsIDS[index]);  
