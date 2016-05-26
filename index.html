@@ -119,10 +119,35 @@
     // successful.  See statusChangeCallback() for when this call is made.
     function testAPI() {
       console.log('Welcome!  Fetching your information.... ');
-      getFBPosts();  
+      getFBPosts();      
       //only getting 274? back tho..
     } 
+    
+    function getCurrentDate(){
+         var today = new Date();
+         var dd = today.getDate();
+         var mm = today.getMonth()+1; 
+         var yyyy = today.getFullYear();
+
+         if(dd<10) {
+            dd='0'+dd;
+         } 
+
+         if(mm<10) {
+            mm='0'+mm;
+         } 
+          
+        return new Date(year+"-"+date+"-"+day);  
+     }
+      
+    function dateDiff(d1, d2) {
+       var timeDiff = Math.abs(d1.getTime() - d2.getTime());
+       return timeDiff / (1000 * 60 * 60 * 24);
+    }
+      
     function getFBPosts() {
+        
+      var currentDate = getCurrentDate();
       var responseSize = 0;
       var index = 0;
       FB.api(
@@ -132,22 +157,63 @@
            function(response) {
           responseSize = response.data.length;       
           for(var k in response.data) {
-            var postID = response.data[k].id;
-            postsIDS[index] = postID;
-            var postDate = response.data[k].created_time;  
-            postsDates[index] = postDate;
-            console.log("got post ID: "+postsIDS[index]);  
-            index++;
-          }  
-             console.log("postsIDS.length = "+postsIDS.length+", responseSize = "+responseSize);
-             console.log("postsDates.length = "+postsDates.length+", responseSize = "+responseSize);  
-             getNumLikes();
+              
+            var postDate = new Date(response.data[k].created_time.substring(0,10));
+              
+            if(dateDiff(currentDate,postDate)<=365){  
+                var postID = response.data[k].id;
+                postsIDS[index] = postID;
+                console.log("got post ID: "+postsIDS[index]);  
+                index++;
+            }
+              
+           }  
+             console.log("postsIDS.length = "+postsIDS.length+", responseSize = "+responseSize);  
+             getFBPosts2();
             // Insert your code here
            }
       ); 
+//      while(postsIDS.length!=responseSize){
+//          console.log('working on IDs...');
+//      }    
+//      if(postsIDS.length==responseSize){
+//          console.log("going to dates methods now!");
+//          getFBPosts2();
+//      } 
+//      else{
+//          console.log("postsIDS.length = "+postsIDS.length+", responseSize = "+responseSize);
+//          console.log("I'm such a terrible coder...");
+//      }    
         
     }
-    
+      function getFBPosts2() {
+          var responseSize = 0;
+          var index = 0;
+          FB.api(
+            '/me/feed?limit=1000',
+            'GET',
+            {},
+               function(response) {
+              responseSize = response.data.length;         
+              for(var k in response.data) {
+                var postDate = response.data[k].created_time;  
+                postsDates[index] = postDate;
+                index++;
+              }  
+                 console.log("postsDates.length = "+postsDates.length+", responseSize = "+responseSize);  
+                 getNumLikes();         
+                // Insert your code here
+               }
+          ); 
+      }
+//      while(postsDates.length!=responseSize){
+//          console.log('working on dates...');
+//      }    
+//      if(postsDates.length==responseSize){
+//          console.log("going to likes methods now!");
+//          getNumLikes();
+//      }       
+//    }
       
     function getNumLikes(){
         for (var k = 0; k < postsIDS.length; k++){
@@ -207,7 +273,7 @@
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(220,220,220,1)",
-                    showXLabels: 10,
+                    showXLabels: 5,
                     pointHitDetectionRadius : 10,
 					data : postData
 				},

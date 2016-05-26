@@ -1,0 +1,61 @@
+extends ../layout
+
+.container
+  .row
+    section
+      .wizard
+        .wizard-inner
+          .connecting-line
+          ul.nav.nav-tabs(role='tablist')
+            li.active(role='presentation')
+              a(href='#step1', data-toggle='tab', aria-controls='step1', role='tab', title='Step 1')
+                span.round-tab
+                  i.glyphicon.glyphicon-folder-open
+            li.disabled(role='presentation')
+              a(href='#step2', data-toggle='tab', aria-controls='step2', role='tab', title='Step 2')
+                span.round-tab
+                  i.glyphicon.glyphicon-pencil
+            li.disabled(role='presentation')
+              a(href='#step3', data-toggle='tab', aria-controls='step3', role='tab', title='Step 3')
+                span.round-tab
+                  i.glyphicon.glyphicon-picture
+            li.disabled(role='presentation')
+              a(href='#complete', data-toggle='tab', aria-controls='complete', role='tab', title='Complete')
+                span.round-tab
+                  i.glyphicon.glyphicon-ok
+        form(role='form')
+          .tab-content
+            #step1.tab-pane.active(role='tabpanel')
+              h3 Step 1: Select Cuisine/Food
+              input(type='text', name='product', list='productName')
+              datalist#productName
+                option(value='Mexican') Mexican
+                option(value='Italian') Italian
+                option(value='Chinese') Chinese
+                option(value='Indian') Indian
+                option(value='Other') Other
+              ul.list-inline.pull-right
+                li
+                  button.btn.btn-primary.next-step(type='button') Save and continue
+            #step2.tab-pane(role='tabpanel')
+              h3 Step 2
+              p This is step 2
+              ul.list-inline.pull-right
+                li
+                  button.btn.btn-default.prev-step(type='button') Previous
+                li
+                  button.btn.btn-primary.next-step(type='button') Save and continue
+            #step3.tab-pane(role='tabpanel')
+              h3 Step 3
+              p This is step 3
+              ul.list-inline.pull-right
+                li
+                  button.btn.btn-default.prev-step(type='button') Previous
+                li
+                  button.btn.btn-default.next-step(type='button') Skip
+                li
+                  button.btn.btn-primary.btn-info-full.next-step(type='button') Save and continue
+            #complete.tab-pane(role='tabpanel')
+              h3 Complete
+              p You have successfully completed all steps.
+            .clearfix
