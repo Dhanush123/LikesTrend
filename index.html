@@ -187,10 +187,10 @@
             var postMonth = response.data[k].created_time.substring(8,10);
             var postD = new Date(postYear,postMonth,postDate);  
             console.log("Date of post: "+postD.toDateString()); 
+            var postID = response.data[k].id;  
             console.log("got post ID: "+postsIDS[index]);
            // if(postYear==(todayD.getYear)||postYear==(todayD.getYear-1)){  
                 if(dateDiff(todayD,postD)<=365){   
-                    var postID = response.data[k].id;
                     postsIDS[index] = postID;
                     postsDates[index] = response.data[k].created_time;  
                     index++;
