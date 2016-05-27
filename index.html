@@ -159,6 +159,13 @@
         'GET',
         {},
           function(response) { 
+              
+              if(response.data.length==0){
+                  console.log("postsIDS.length = "+postsIDS.length+", responseSize = "+responseSize);  
+                  console.log("postsDates.length = "+postsDates.length+", responseSize = "+responseSize);
+                  getNumLikes(); 
+              }
+              else{
                 parsePosts(response);
            });  
     }
@@ -171,14 +178,8 @@
       var morePosts;
       var nextLinkParam;    
           console.log("paging stuff: "+response.paging);      
-          if(typeof response!="undefined"){
-              morePosts = true;
-              nextLinkParam=response.paging.next;
-          }
-          else{
-              morePosts = false;
-          }
-                
+          nextLinkParam=response.paging.next;
+
           responseSize = response.data.length;       
           for(var k in response.data) {
               
@@ -198,14 +199,7 @@
            // }
            }    
         
-              if(morePosts==false){
-                  console.log("postsIDS.length = "+postsIDS.length+", responseSize = "+responseSize);  
-                  console.log("postsDates.length = "+postsDates.length+", responseSize = "+responseSize);
-                  getNumLikes(); 
-              }
-              else{
                   getFBPosts(nextLinkParam);
-              } 
     }
       
     function getNumLikes(){
