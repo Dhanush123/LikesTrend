@@ -183,8 +183,8 @@
           for(var k in response.data) {
               
             var postYear = response.data[k].created_time.substring(0,4);
-            var postDate = response.data[k].created_time.substring(5,7);
-            var postMonth = response.data[k].created_time.substring(8,10);
+            var postMonth = response.data[k].created_time.substring(5,7);
+            var postDate = response.data[k].created_time.substring(8,10);
             var postD = new Date(postYear,postMonth,postDate);  
             console.log("Date of post: "+postMonth+"/"+postDate+"/"+postYear); 
            // if(postYear==(todayD.getYear)||postYear==(todayD.getYear-1)){  
