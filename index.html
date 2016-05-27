@@ -51,7 +51,8 @@
     var postsDates = [];
     var postsIDS = [];
     var postNumLikes = [];  
-    
+    var responseSize = 0;
+      
         // This is called with the results from from FB.getLoginStatus().
     function statusChangeCallback(response) {
       console.log('statusChangeCallback');
@@ -173,7 +174,6 @@
     function parsePosts(response) {
         
       var todayD = getCurrentDate();
-      var responseSize = 0;
       var index = 0;
       var morePosts;
       var nextLinkParam;    
