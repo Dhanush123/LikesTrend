@@ -214,7 +214,7 @@
               'GET',
               {"summary":"true"},
               function(response) {
-                  if(response.summary.total_count){
+                  if(!response.summary.total_count){
                        console.log("returning -1 likes for this post");
                        return -1; //just don't even display that post then
                   }
