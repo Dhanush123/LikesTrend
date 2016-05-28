@@ -212,19 +212,20 @@
               'GET',
               {"summary":"true"},
               function(response) {
-                  if(response.summary.total_count>=0){
-                       postNumLikes[k] = response.summary.total_count;
-                   }
+                  if(Number.isNaN(response.summary.total_count)){
+                       postDates[k] = -1; //just don't even display that post then
+                  }
                   else{
-                      postDates[k] = undefined; //just don't even display that post then
+                       postNumLikes[k] = response.summary.total_count;
                   }
                   console.log("postNumLikes["+k+"] = "+postNumLikes[k]);
               }
             );
         })(k);
-    } 
-        
-    postDates = postDates.filter(function(k){ return k != undefined });
+    }       
+    postDates = postDates.filter(function(x){ return x != -1 });
+    console.log("new postDates.length "+postDates.length);
+    console.log("postNumLikes.length "+postNumLikes.length);    
     setTimeout(drawGraph,15000);
     }
       
