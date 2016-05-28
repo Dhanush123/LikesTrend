@@ -197,6 +197,9 @@
                     if(likesResult!=-1){
                         postsDates[index] = response.data[k].created_time;
                     }
+                    else{
+                        index--;
+                    }
                     console.log("got post ID: "+postsIDS[index]);  
                     index++;
                 }
