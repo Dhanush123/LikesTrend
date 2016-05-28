@@ -50,7 +50,7 @@
   <script>
     var postsDates = [];
     var postsIDS = [];
-    var postNumLikes = [];  
+    var postsNumLikes = [];  
     var responseSize = 0;
       
         // This is called with the results from from FB.getLoginStatus().
@@ -213,19 +213,19 @@
               {"summary":"true"},
               function(response) {
                   if(Number.isNaN(response.summary.total_count)){
-                       postDates[k] = -1; //just don't even display that post then
+                       postsDates[k] = -1; //just don't even display that post then
                   }
                   else{
-                       postNumLikes[k] = response.summary.total_count;
+                       postsNumLikes[k] = response.summary.total_count;
                   }
-                  console.log("postNumLikes["+k+"] = "+postNumLikes[k]);
+                  console.log("postNumLikes["+k+"] = "+postsNumLikes[k]);
               }
             );
         })(k);
     }       
-    postDates = postDates.filter(function(x){ return x != -1 });
-    console.log("new postDates.length "+postDates.length);
-    console.log("postNumLikes.length "+postNumLikes.length);    
+    postsDates = postsDates.filter(function(x){ return x != -1 });
+    console.log("new postsDates.length "+postsDates.length);
+    console.log("postsNumLikes.length "+postsNumLikes.length);    
     setTimeout(drawGraph,15000);
     }
       
@@ -244,8 +244,8 @@
         console.log("dates to be used in graph: "+postDates1);          
           
         
-        postNumLikes.reverse();  
-        var postData = postNumLikes.slice(0);
+        postsNumLikes.reverse();  
+        var postData = postsNumLikes.slice(0);
         console.log("# likes to be used in graph: "+postData.length);  
         console.log("likes to be used in graph: "+postData);  
         
