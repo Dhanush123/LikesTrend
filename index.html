@@ -193,7 +193,7 @@
                 if(dateDiff(todayD,postD)<=365){   
                     var postID = response.data[k].id;
                     postsIDS[index] = postID;
-                    var likesResult = getNumLikes(postIDS[index],k); 
+                    var likesResult = getNumLikes(postsIDS[index],k); 
                     if(likesResult!=-1){
                         postsDates[index] = response.data[k].created_time;
                     }
