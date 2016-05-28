@@ -194,7 +194,9 @@
                     var postID = response.data[k].id;
                     postsIDS[index] = postID;
                     var likesResult = getNumLikes(postIDS[index],k); 
-                    likesResult!=-1 ? postsDates[index] = response.data[k].created_time : ;
+                    if(likesResult!=-1){
+                        postsDates[index] = response.data[k].created_time;
+                    }
                     console.log("got post ID: "+postsIDS[index]);  
                     index++;
                 }
