@@ -164,7 +164,8 @@
               if(response.data.length==0){
                   console.log("postsIDS.length = "+postsIDS.length+", responseSize = "+responseSize);  
                   console.log("postsDates.length = "+postsDates.length+", responseSize = "+responseSize);
-                  getNumLikes(); 
+                  console.log("postsNumLikes.length "+postsNumLikes.length);    
+                  setTimeout(drawGraph,15000);
               }
               else{
                 parsePosts(response);
@@ -192,41 +193,35 @@
                 if(dateDiff(todayD,postD)<=365){   
                     var postID = response.data[k].id;
                     postsIDS[index] = postID;
-                    postsDates[index] = response.data[k].created_time;
+                    var likesResult = getNumLikes(postIDS[index],k); 
+                    likesResult!=-1 ? postsDates[index] = response.data[k].created_time : ;
                     console.log("got post ID: "+postsIDS[index]);  
                     index++;
                 }
            // }
            }    
-        
-                  getFBPosts(nextLinkParam);
+        getFBPosts(nextLinkParam);
     }
       
-    function getNumLikes(){
-        for (var k = 0; k < postsIDS.length; k++){
-            (function(k) {
-            var postID = postsIDS[k];
+    function getNumLikes(IDParam,index){
+ 
+            var postID = IDParam;
             var url = '/'+postID+'/likes';
                FB.api(
                url,
               'GET',
               {"summary":"true"},
               function(response) {
-                  if(Number.isNaN(response.summary.total_count)){
-                       postsDates[k] = -1; //just don't even display that post then
+                  if(typeof response.summary.total_count === "undefined"){
+                       return -1; //just don't even display that post then
                   }
                   else{
-                       postsNumLikes[k] = response.summary.total_count;
+                       postsNumLikes[index]=response.summary.total_count;
+                       return postsNumLikes[index];
                   }
                   console.log("postNumLikes["+k+"] = "+postsNumLikes[k]);
               }
             );
-        })(k);
-    }       
-    postsDates = postsDates.filter(function(x){ return x != -1 });
-    console.log("new postsDates.length "+postsDates.length);
-    console.log("postsNumLikes.length "+postsNumLikes.length);    
-    setTimeout(drawGraph,15000);
     }
       
       function drawGraph() {   
