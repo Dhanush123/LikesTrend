@@ -212,19 +212,19 @@
               'GET',
               {"summary":"true"},
               function(response) {
-                  console.log('response to likes API call: '+response);
                   if(response.summary.total_count>=0){
                        postNumLikes[k] = response.summary.total_count;
                    }
                   else{
-                      postDates[k] = undefined; 
-                      postDates = postDates.filter(function(k){ return k != undefined }); //just don't even display that post then
+                      postDates[k] = undefined; //just don't even display that post then
                   }
                   console.log("postNumLikes["+k+"] = "+postNumLikes[k]);
               }
             );
         })(k);
-    }    
+    } 
+        
+    postDates = postDates.filter(function(k){ return k != undefined });
     setTimeout(drawGraph,15000);
     }
       
