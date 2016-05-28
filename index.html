@@ -217,7 +217,8 @@
                        postNumLikes[k] = response.summary.total_count;
                    }
                   else{
-                       postsDates.splice(k,1); //just don't even display that post then
+                      postDates[k] = undefined; 
+                      postDates = postDates.filter(function(k){ return k != undefined }); //just don't even display that post then
                   }
                   console.log("postNumLikes["+k+"] = "+postNumLikes[k]);
               }
