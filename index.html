@@ -202,7 +202,7 @@
                     console.log("got post ID: "+postsIDS[index]);  
                     var likesResult = getNumLikes(postsIDS[index],index); 
                     if(likesResult!=-1){
-                        postsDates[index] = response.data[k].created_time;
+                        postsDates[index] = postMonth+"/"+postDate+"/"+postYear;
                         index++;
                     }
                 }
@@ -237,21 +237,32 @@
       function cleanUpArrays(){
         (postsDates===undefined) ? console.log("POSTSDATES UNDEFINED SOMEHOW") : console.log("postsdates is fine with length: "+postsDates.length); 
         postsDates.reverse();  
-        postDates = postsDates.slice(0);
           
-        postDates1 = [];
-        
-        for(var i in postDates) {
-            postDates1[i] = (postDates[i].substring(0,10));
-        }
-        console.log("# dates to be used in graph: "+postDates1.length);  
-        console.log("dates to be used in graph: "+postDates1);          
-          
-        
         postsNumLikes.reverse();  
-        postData = postsNumLikes.slice(0);
-        console.log("# likes to be used in graph: "+postData.length);  
-        console.log("likes to be used in graph: "+postData);
+        //postData = postsNumLikes.slice(0);   
+        
+        for(var i = 0; i < postDates.length; i++){
+            if(post===undefined){
+                
+                var newLatterPartD = postDates.slice(i+1);
+                var newLatterPartL = postsNumLikes.slice(i+1);
+                
+                var z = i;
+                for (var x = 0; x < newLatterPartD.length; x++){
+                    postDates[z]=newLatterPartD[x];
+                    postsNumLikes[z]=newLatterPartL[x];
+                    z++;
+                }
+               
+            }
+        }  
+          
+        console.log("# dates to be used in graph: "+postsDates.length);  
+        console.log("dates to be used in graph: "+postsDates);          
+          
+        
+        console.log("# likes to be used in graph: "+postsNumLikes.length);  
+        console.log("likes to be used in graph: "+postsNumLikes);
       }
       
       function drawGraph() {   
@@ -261,7 +272,7 @@
         
 		var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
 		var lineChartData = {
-			labels : postDates1,
+			labels : postsDates,
 			datasets : [
 				{
 					label: "Likes vs. Time Data",
