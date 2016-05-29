@@ -217,7 +217,7 @@
               'GET',
               {"summary":"true"},
               function(response) {
-                  if(response.data.summary != undefined && response.data.summary.total_count != undefined){
+                  if(response.summary != undefined && response.summary.total_count != undefined){
                        postsNumLikes[index]=response.summary.total_count;
                        console.log("returning "+postsNumLikes[index]+" likes for this post");
                        return postsNumLikes[index];
