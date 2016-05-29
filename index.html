@@ -214,7 +214,7 @@
               'GET',
               {"summary":"true"},
               function(response) {
-                  if(response.data[x].summary !== undefined && response[x].data[x].summary.total_count !== undefined){
+                  if(response.data.summary !== undefined && response.data.summary.total_count !== undefined){
                        postsNumLikes[index]=response.summary.total_count;
                        console.log("returning "+postsNumLikes[index]+" likes for this post");
                        return postsNumLikes[index];
@@ -260,8 +260,8 @@
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(220,220,220,1)",
-                    showXLabels: 5,
-                    pointHitDetectionRadius : 10,
+                    showXLabels: 3,
+                    pointHitDetectionRadius : 5,
 					data : postData
 				},
 			]
