@@ -292,10 +292,25 @@
           leastLikesDate = postsDates[lIndex];
           leastLikesID = postsIDS[lIndex];
           avgLikesNum = Math.round(avgLikesNum/postsNumLikes.length);
-          document.getElementById("mLikesShow").value+=maxLikesNum+" likes on "+maxLikesDate+" - "+postsMessages[mIndex];
-          document.getElementById("lLikesShow").value+=leastLikesNum+" likes on "+leastLikesDate+" - "+postsMessages[lIndex];
-          document.getElementById("aLikesShow").value+=maxLikesNum+" likes";  
           
+          var list = document.getElementById('insightsList'),items = list.childNodes;
+
+          for (var i = 0, length = childNodes.length; i < length; i++){
+                
+               switch(i){
+                   case 1:
+                       items[1].innerHTML+=maxLikesNum+" likes on "+maxLikesDate+" - "+postsMessages[mIndex]; 
+                       break;
+                   case 2:
+                        items[2].innerHTML+=leastLikesNum+" likes on "+leastLikesDate+" - "+postsMessages[lIndex];
+                        break;
+                   case 3:
+                        items[3].innerHTML+=.value+=maxLikesNum+" likes";
+                        break;
+                   default:
+               }
+            console.log("hopefully done setting insights data?");
+           }
       }
       
       function drawGraph() {   
@@ -333,7 +348,7 @@
       
   </script>
     <canvas id="canvas" width="400" height="400"></canvas>
-    <ul class="list-group">
+    <ul class="list-group" id="insightsList">
       <li class="list-group-item" id="mLikesShow">Most likes: </li>
       <li class="list-group-item" id="lLikesShow">Least likes: </li>
       <li class="list-group-item" id="aLikesShow">Average likes: </li>
