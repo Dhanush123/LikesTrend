@@ -201,12 +201,14 @@
                     console.log("got post ID: "+postsIDS[index]);  
                     var likesResult = getNumLikes(postsIDS[index],index); 
                    if(likesResult!=-1){
+                       
                     if(response.data[k].message!== undefined){
                         postsMessages[index]=response.data[k].message;
                     }  
                     else{
                         postsMessages[index]="No message/Unretrievable";
                     }  
+                       
                     postsDates[index] = postMonth+"/"+postDate+"/"+postYear;
                     index++;
                   }
@@ -297,19 +299,19 @@
           for (var i = 0; i < items.length; i++){
                 
                switch(i){
-                   case 1:
-                       items[1].innerHTML+=maxLikesNum+" likes on "+maxLikesDate+" - "+postsMessages[mIndex]; 
+                   case 0:
+                       items[0].innerHTML+=maxLikesNum+" likes on "+maxLikesDate+" - "+postsMessages[mIndex]; 
                        break;
-                   case 2:
-                        items[2].innerHTML+=leastLikesNum+" likes on "+leastLikesDate+" - "+postsMessages[lIndex];
+                   case 1:
+                        items[1].innerHTML+=leastLikesNum+" likes on "+leastLikesDate+" - "+postsMessages[lIndex];
                         break;
-                   case 3:
-                        items[3].innerHTML+=maxLikesNum+" likes";
+                   case 2:
+                        items[2].innerHTML+=avgLikesNum+" likes";
                         break;
                    default:
                }
-            console.log("hopefully done setting insights data?");
            }
+           console.log("hopefully done setting insights data?");
       }
       
       function drawGraph() {   
