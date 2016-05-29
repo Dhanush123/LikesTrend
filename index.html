@@ -274,7 +274,7 @@
           var maxLikesNum = 0;
           var avgLikesNum = 0;
           var leastLikesNum = 1000000000;
-          var maxLikesDate, maxLikesID, leastLikesDate, leastLikesID, mIndex, lIndex;
+          var maxLikesDate, maxLikesID, leastLikesDate, leastLikesID, mIndex, lIndex, mMsg, lMsg;
          
           for(var x = 0; x < postsNumLikes.length; x++){
               if(postsNumLikes[x]>maxLikesNum){
@@ -293,35 +293,28 @@
           leastLikesDate = postsDates[lIndex];
           leastLikesID = postsIDS[lIndex];
           avgLikesNum = Math.round(avgLikesNum/postsNumLikes.length);
+          mMsg=postsMessages[mIndex];
+          lMsg=postsMessages[lIndex];
           
-//          var list = document.getElementById('insightsList'),items = list.childNodes;
-//
-//          for (var i = 0; i < items.length; i++){
-//                
-//               switch(i){
-//                   case 0:
                        console.log("max stuff");
-                       document.getElementById("mLikesShow").innerText+=maxLikesNum+" likes on "+maxLikesDate+" - "+postsMessages[mIndex]; 
-                    //   break;
-                 //  case 1:
+                       document.getElementById("mLikesShow").innerText+=" "+maxLikesNum+" likes on "+maxLikesDate+" - "+mMsg; 
+
                         console.log("min stuff");
-                        document.getElementById("lLikesShow").innerText+=leastLikesNum+" likes on "+leastLikesDate+" - "+postsMessages[lIndex];
-                     //   break;
-                  // case 2:
+                        document.getElementById("lLikesShow").innerText+=" "+leastLikesNum+" likes on "+leastLikesDate+" - "+lMsg;
+
                         console.log("avg stuff");
-                        document.getElementById("aLikesShow").innerText+=avgLikesNum+" likes";
-                     //   break;
-                //   default:
-//               }
-//           }
-           console.log("mDate: "+maxLikesDate+",mLikes: "+maxLikesNum+",mID: "+maxLikesID+",mIndex: "+mIndex);
-           console.log("lDate: "+leastLikesDate+",lLikes: "+leastLikesNum+",lID: "+leastLikesID+",lIndex: "+lIndex);
+                        document.getElementById("aLikesShow").innerText+=" "+avgLikesNum+" likes";
+
+           console.log("mDate: "+maxLikesDate+",mLikes: "+maxLikesNum+",mID: "+maxLikesID+",mIndex: "+mIndex+",mMsg: "+mMsg);
+           console.log("lDate: "+leastLikesDate+",lLikes: "+leastLikesNum+",lID: "+leastLikesID+",lIndex: "+lIndex+",lMsg: "+lMsg);
            console.log("average likes: "+avgLikesNum);
            console.log("hopefully done setting insights data?");
       }
       
       function drawGraph() {   
         console.log("inside graph method now"); 
+          
+        genInsights();    
         
         cleanUpArrays();     
         
@@ -348,8 +341,6 @@
             maintainAspectRatio: true,
 			responsive: true
 		});
-       
-        genInsights();  
           
      }
       
