@@ -38,6 +38,7 @@
       <div class="container">
         <h1>Find out how popular you are on Facebook!</h1>
         <p>Simply click the Facebook "Log In" button, wait no more than 30 seconds on average, and a graph will appear showing the likes of posts on your wall from within one year from today. Enjoy!</p>
+        <h2>Note: if the likes of a post could not be retrieved, it will not be displayed or counted.</h2>  
                       <!--
         Below we include the Login Button social plugin. This button uses
         the JavaScript SDK to present a graphical Login button that triggers
@@ -272,7 +273,7 @@
       
       function genInsights(){
           var maxLikesNum = 0;
-          var avgLikesNum = 0;
+          var totalLikesNum = 0;
           var leastLikesNum = 1000000000;
           var maxLikesDate, maxLikesID, leastLikesDate, leastLikesID, mIndex, lIndex, mMsg, lMsg;
          
@@ -292,7 +293,8 @@
           maxLikesID = postsIDS[mIndex];
           leastLikesDate = postsDates[lIndex];
           leastLikesID = postsIDS[lIndex];
-          avgLikesNum = Math.round(avgLikesNum/postsNumLikes.length);
+          console.log("total posts: "+postsNumLikes.length+", total likes: "+totalLikesNum);
+          var avgLikesNum = Math.round(avgLikesNum/postsNumLikes.length);
           mMsg=postsMessages[mIndex];
           lMsg=postsMessages[lIndex];
           
