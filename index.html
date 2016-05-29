@@ -234,21 +234,21 @@
       function cleanUpArrays(){
         (postsDates===undefined) ? console.log("POSTSDATES UNDEFINED SOMEHOW") : console.log("postsdates is fine with length: "+postsDates.length); 
         postsDates.reverse();  
-        var postsDates = postsDates.slice(0);
+        var postDates = postsDates.slice(0);
         
-        var postsDates1 = [];
+        var postDates1 = [];
         
-        for(var i in postsDates) {
-            postsDates1[i] = (postsDates[i].substring(0,10));
+        for(var i in postDates) {
+            postDates1[i] = (postDates[i].substring(0,10));
         }
-        console.log("# dates to be used in graph: "+postsDates1.length);  
-        console.log("dates to be used in graph: "+postsDates1);          
+        console.log("# dates to be used in graph: "+postDates1.length);  
+        console.log("dates to be used in graph: "+postDates1);          
           
         
         postsNumLikes.reverse();  
-        var postsData = postsNumLikes.slice(0);
-        console.log("# likes to be used in graph: "+postsData.length);  
-        console.log("likes to be used in graph: "+postsData);
+        var postData = postsNumLikes.slice(0);
+        console.log("# likes to be used in graph: "+postData.length);  
+        console.log("likes to be used in graph: "+postData);
       }
       
       function drawGraph() {   
@@ -258,7 +258,7 @@
         
 		var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
 		var lineChartData = {
-			labels : postsDates1,
+			labels : postDates1,
 			datasets : [
 				{
 					label: "Likes vs. Time Data",
@@ -270,7 +270,7 @@
 					pointHighlightStroke : "rgba(220,220,220,1)",
                     showXLabels: 3,
                     pointHitDetectionRadius : 5,
-					data : postsData
+					data : postData
 				},
 			]
 		}
