@@ -53,6 +53,7 @@
     var postsNumLikes = []; 
     var postDates = [];
     var postDates1 = [];  
+    var postData = [];
     var responseSize = 0;
       
         // This is called with the results from from FB.getLoginStatus().
@@ -248,7 +249,7 @@
           
         
         postsNumLikes.reverse();  
-        var postData = postsNumLikes.slice(0);
+        postData = postsNumLikes.slice(0);
         console.log("# likes to be used in graph: "+postData.length);  
         console.log("likes to be used in graph: "+postData);
       }
