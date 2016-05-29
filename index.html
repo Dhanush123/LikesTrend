@@ -51,9 +51,6 @@
     var postsDates = [];
     var postsIDS = [];
     var postsNumLikes = []; 
-    var postDates = [];
-    var postDates1 = [];  
-    var postData = [];
     var responseSize = 0;
       
         // This is called with the results from from FB.getLoginStatus().
@@ -248,14 +245,14 @@
                 var newLatterPartD = postsDates.slice(i+1);
                 var newLatterPartL = postsNumLikes.slice(i+1);
                 
-                postsDates.splice.apply(postsDates,[i,0].concat(newLatterPartD));
-                postsNumLikes.splice.apply(postsNumLikes,[i,0,].concat(newLatterPartL));
-//                var z = i;
-//                for (var x = 0; x < newLatterPartD.length; x++){
-//                    postDates[z]=newLatterPartD[x];
-//                    postsNumLikes[z]=newLatterPartL[x];
-//                    z++;
-               // }
+//                postsDates.splice.apply(postsDates,[i,0].concat(newLatterPartD));
+//                postsNumLikes.splice.apply(postsNumLikes,[i,0,].concat(newLatterPartL));
+                var z = i;
+                for (var x = 0; x < newLatterPartD.length; x++){
+                    postsDates[z]=newLatterPartD[x];
+                    postsNumLikes[z]=newLatterPartL[x];
+                    z++;
+                }
                
             }
         }  
