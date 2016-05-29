@@ -200,7 +200,7 @@
                     postsIDS[index] = postID;
                     console.log("got post ID: "+postsIDS[index]);  
                     var likesResult = getNumLikes(postsIDS[index],index); 
-                   if(likesResult!=-1){
+                   //if(likesResult!=-1){
                        
                     if(response.data[k].message!== undefined){
                         postsMessages[index]=response.data[k].message;
@@ -211,7 +211,7 @@
                        
                     postsDates[index] = postMonth+"/"+postDate+"/"+postYear;
                     index++;
-                  }
+                 // }
                 }
               
            }    
@@ -311,6 +311,9 @@
                    default:
                }
            }
+           console.log("mDate: "+maxLikesDate+",mLikes: "+maxLikesNum+",mID: "+maxLikesID+",mIndex: "+mIndex);
+           console.log("lDate: "+leastLikesDate+",lLikes: "+leastLikesNum+",lID: "+leastLikesID+",lIndex: "+lIndex);
+           console.log("average likes: "+avgLikesNum);
            console.log("hopefully done setting insights data?");
       }
       
