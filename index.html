@@ -294,26 +294,26 @@
           leastLikesID = postsIDS[lIndex];
           avgLikesNum = Math.round(avgLikesNum/postsNumLikes.length);
           
-          var list = document.getElementById('insightsList'),items = list.childNodes;
-
-          for (var i = 0; i < items.length; i++){
-                
-               switch(i){
-                   case 0:
-                       console.log("in 0 case of switch, max stuff");
-                       items[0].innerHTML+=maxLikesNum+" likes on "+maxLikesDate+" - "+postsMessages[mIndex]; 
-                       break;
-                   case 1:
-                        console.log("in 1 case of switch, min stuff");
-                        items[1].innerHTML+=leastLikesNum+" likes on "+leastLikesDate+" - "+postsMessages[lIndex];
-                        break;
-                   case 2:
-                        console.log("in 2 case of switch, avg stuff");
-                        items[2].innerHTML+=avgLikesNum+" likes";
-                        break;
-                   default:
-               }
-           }
+//          var list = document.getElementById('insightsList'),items = list.childNodes;
+//
+//          for (var i = 0; i < items.length; i++){
+//                
+//               switch(i){
+//                   case 0:
+                       console.log("max stuff");
+                       document.getElementById("mLikesShow").innerText+=maxLikesNum+" likes on "+maxLikesDate+" - "+postsMessages[mIndex]; 
+                    //   break;
+                 //  case 1:
+                        console.log("min stuff");
+                        document.getElementById("lLikesShow").innerText+=leastLikesNum+" likes on "+leastLikesDate+" - "+postsMessages[lIndex];
+                     //   break;
+                  // case 2:
+                        console.log("avg stuff");
+                        document.getElementById("aLikesShow").innerText+=avgLikesNum+" likes";
+                     //   break;
+                //   default:
+//               }
+//           }
            console.log("mDate: "+maxLikesDate+",mLikes: "+maxLikesNum+",mID: "+maxLikesID+",mIndex: "+mIndex);
            console.log("lDate: "+leastLikesDate+",lLikes: "+leastLikesNum+",lID: "+leastLikesID+",lIndex: "+lIndex);
            console.log("average likes: "+avgLikesNum);
