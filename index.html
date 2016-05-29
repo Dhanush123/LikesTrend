@@ -248,8 +248,8 @@
                 var newLatterPartD = postsDates.slice(i+1);
                 var newLatterPartL = postsNumLikes.slice(i+1);
                 
-                postsDates.splice.apply(postDates,[i,0].concat(newLatterPartD));
-                postsNumLikes.splice.apply(postDates,[i,0,].concat(newLatterPartL));
+                postsDates.splice.apply(postsDates,[i,0].concat(newLatterPartD));
+                postsNumLikes.splice.apply(postsNumLikes,[i,0,].concat(newLatterPartL));
 //                var z = i;
 //                for (var x = 0; x < newLatterPartD.length; x++){
 //                    postDates[z]=newLatterPartD[x];
