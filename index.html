@@ -247,11 +247,9 @@
                 
 //                postsDates.splice.apply(postsDates,[i,0].concat(newLatterPartD));
 //                postsNumLikes.splice.apply(postsNumLikes,[i,0,].concat(newLatterPartL));
-                var z = i;
-                for (var x = 0; x < newLatterPartD.length; x++){
-                    postsDates[z]=newLatterPartD[x];
-                    postsNumLikes[z]=newLatterPartL[x];
-                    z++;
+                for (var x = i-1; x >=0; x--){
+                    postsDates[x+1]=postsDates[i];
+                    postsNumLikes[x+1]=postsNumLikes[i];
                 }
                
             }
@@ -283,8 +281,8 @@
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(220,220,220,1)",
-                    showXLabels: 3,
-                    pointHitDetectionRadius : 5,
+                    showXLabels: 10,
+                    pointHitDetectionRadius : 3,
 					data : postsNumLikes
 				},
 			]
