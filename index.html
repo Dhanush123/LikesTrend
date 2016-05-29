@@ -248,12 +248,14 @@
                 var newLatterPartD = postDates.slice(i+1);
                 var newLatterPartL = postsNumLikes.slice(i+1);
                 
-                var z = i;
-                for (var x = 0; x < newLatterPartD.length; x++){
-                    postDates[z]=newLatterPartD[x];
-                    postsNumLikes[z]=newLatterPartL[x];
-                    z++;
-                }
+                postDates.splice(i,0,newLatterPartD);
+                postsNumLikes.splice(i,0,newLatterPartL);
+//                var z = i;
+//                for (var x = 0; x < newLatterPartD.length; x++){
+//                    postDates[z]=newLatterPartD[x];
+//                    postsNumLikes[z]=newLatterPartL[x];
+//                    z++;
+               // }
                
             }
         }  
