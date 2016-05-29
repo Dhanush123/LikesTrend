@@ -214,14 +214,14 @@
               'GET',
               {"summary":"true"},
               function(response) {
-                  if(!response.summary.total_count){
-                       console.log("returning -1 likes for this post");
-                       return -1; //just don't even display that post then
-                  }
-                  else{
+                  if(response.data[x].summary !== undefined && response[x].data[x].summary.total_count !== undefined){
                        postsNumLikes[index]=response.summary.total_count;
                        console.log("returning "+postsNumLikes[index]+" likes for this post");
                        return postsNumLikes[index];
+                  }
+                  else{
+                       console.log("ERROR -1 RETURNED FOR LIKES");
+                       return -1; //just don't even display that post then
                   }
 
               }
