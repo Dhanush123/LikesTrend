@@ -51,6 +51,7 @@
     var postsDates = [];
     var postsIDS = [];
     var postsNumLikes = []; 
+    var postsMessages = [];  
     var responseSize = 0;
       
         // This is called with the results from from FB.getLoginStatus().
@@ -192,16 +193,24 @@
             var postDate = response.data[k].created_time.substring(8,10);
             var postD = new Date(postYear,postMonth,postDate);  
             console.log("Date of post: "+postMonth+"/"+postDate+"/"+postYear); 
+            
+              
+            if(response.data[k].message!== undefined){
+                postsMessages[index]=response.data[k].message;
+            }  
+            else{
+                postsMessages[index]="No message/Unretrievable";
+            }  
 
                 if(dateDiff(todayD,postD)<=365){   
                     var postID = response.data[k].id;
                     postsIDS[index] = postID;
                     console.log("got post ID: "+postsIDS[index]);  
                     var likesResult = getNumLikes(postsIDS[index],index); 
-                    if(likesResult!=-1){
+                   // if(likesResult!=-1){
                         postsDates[index] = postMonth+"/"+postDate+"/"+postYear;
                         index++;
-                    }
+                  //  }
                 }
               
            }    
@@ -242,32 +251,57 @@
             if(postsNumLikes[i]===undefined){
                 console.log("POST WITH UNDEFINED LIKES FOUND @ "+postsDates[i]);
                 
-                var newLatterPartD = postsDates.slice(i+1);
-                var newLatterPartL = postsNumLikes.slice(i+1);
-                
-//                postsDates.splice.apply(postsDates,[i,0].concat(newLatterPartD));
-//                postsNumLikes.splice.apply(postsNumLikes,[i,0,].concat(newLatterPartL));
                 for (var x = i-1; x >=0; x--){
+                    postsIDS[x+1]=postsIDS[x];
                     postsDates[x+1]=postsDates[x];
                     postsNumLikes[x+1]=postsNumLikes[x];
+                    postsMessages[x+1]=postsMessages[x];
                 }
                
             }
-        }  
+        }
+          
+        console.log("# dates to be used in graph: "+postsDates.length);  
+        console.log("dates to be used in graph: "+postsDates);          
+          
+        console.log("# likes to be used in graph: "+postsNumLikes.length);  
+        console.log("likes to be used in graph: "+postsNumLikes);   
+          
+      }
+      
+      function genInsights(){
+          var maxLikesNum = 0;
+          var avgLikesNum = 0;
+          var leastLikesNum = 1000000000;
+          var maxLikesDate, maxLikesID, leastLikesDate, leastLikesID, mIndex, lIndex;
+         
+          for(var x = 0; x < postsNumLikes.length; x++){
+              if(postsNumLikes[x]>maxLikesNum){
+                  maxLikesNum=postsNumLikes[x];
+                  mIndex = x;
+              }
+              if(postsNumLikes[x]<leastLikesNum){
+                  leastLikesNum=postsNumLikes[x];
+                  lIndex = x;
+              }
+              avgLikesNum+=postsNumLikes[x];
+          }
+          
+          maxLikesDate = postsDates[mIndex];
+          maxLikesID = postsIDS[mIndex];
+          leastLikesDate = postsDates[lIndex];
+          leastLikesID = postsIDS[lIndex];
+          avgLikesNum = Math.round(avgLikesNum/postsNumLikes.length);
+          document.getElementById("mLikesShow").value+=maxLikesNum+" likes on "+maxLikesDate+" - "+postsMessages[mIndex];
+          document.getElementById("lLikesShow").value+=leastLikesNum+" likes on "+leastLikesDate+" - "+postsMessages[lIndex];
+          document.getElementById("aLikesShow").value+=maxLikesNum+" likes";  
           
       }
       
       function drawGraph() {   
         console.log("inside graph method now"); 
         
-        cleanUpArrays();  
-          
-        console.log("# dates to be used in graph: "+postsDates.length);  
-        console.log("dates to be used in graph: "+postsDates);          
-          
-        
-        console.log("# likes to be used in graph: "+postsNumLikes.length);  
-        console.log("likes to be used in graph: "+postsNumLikes);      
+        cleanUpArrays();     
         
 		var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
 		var lineChartData = {
@@ -292,16 +326,17 @@
             maintainAspectRatio: true,
 			responsive: true
 		});
-        }
+       
+        genInsights();  
+          
+     }
       
   </script>
     <canvas id="canvas" width="400" height="400"></canvas>
     <ul class="list-group">
-      <li class="list-group-item">Most</li>
-      <li class="list-group-item">Dapibus ac facilisis in</li>
-      <li class="list-group-item">Morbi leo risus</li>
-      <li class="list-group-item">Porta ac consectetur ac</li>
-      <li class="list-group-item">Vestibulum at eros</li>
+      <li class="list-group-item" id="mLikesShow">Most likes: </li>
+      <li class="list-group-item" id="lLikesShow">Least likes: </li>
+      <li class="list-group-item" id="aLikesShow">Average likes: </li>
     </ul>    
     
 </body>
