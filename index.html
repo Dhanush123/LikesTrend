@@ -260,18 +260,19 @@
             }
         }  
           
-        console.log("# dates to be used in graph: "+postsDates.length);  
-        console.log("dates to be used in graph: "+postsDates);          
-          
-        
-        console.log("# likes to be used in graph: "+postsNumLikes.length);  
-        console.log("likes to be used in graph: "+postsNumLikes);
       }
       
       function drawGraph() {   
         console.log("inside graph method now"); 
         
         cleanUpArrays();  
+          
+        console.log("# dates to be used in graph: "+postsDates.length);  
+        console.log("dates to be used in graph: "+postsDates);          
+          
+        
+        console.log("# likes to be used in graph: "+postsNumLikes.length);  
+        console.log("likes to be used in graph: "+postsNumLikes);      
         
 		var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
 		var lineChartData = {
