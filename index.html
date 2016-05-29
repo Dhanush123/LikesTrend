@@ -241,8 +241,9 @@
         postsNumLikes.reverse();  
         //postData = postsNumLikes.slice(0);   
         
-        for(var i = 0; i < postDates.length; i++){
-            if(post===undefined){
+        for(var i = 0; i < postsNumLikes.length; i++){
+            if(postsNumLikes[i]===undefined){
+                console.log("POST WITH UNDEFINED LIKES FOUND @ "postDates)
                 
                 var newLatterPartD = postDates.slice(i+1);
                 var newLatterPartL = postsNumLikes.slice(i+1);
@@ -284,7 +285,7 @@
 					pointHighlightStroke : "rgba(220,220,220,1)",
                     showXLabels: 3,
                     pointHitDetectionRadius : 5,
-					data : postData
+					data : postsNumLikes
 				},
 			]
 		}
