@@ -37,7 +37,7 @@
     <div class="jumbotron">
       <div class="container">
         <h1>Find out how popular you are on Facebook!</h1>
-        <p>Simply click the Facebook "Log In" button, wait no more than 30 seconds on average, and a graph will appear showing the likes across the last 275 posts on your wall (both the ones made by you and the ones you were tagged in). Enjoy!</p>
+        <p>Simply click the Facebook "Log In" button, wait no more than 30 seconds on average, and a graph will appear showing the likes of posts on your wall from within one year from today. Enjoy!</p>
                       <!--
         Below we include the Login Button social plugin. This button uses
         the JavaScript SDK to present a graphical Login button that triggers
@@ -289,12 +289,19 @@
 		}
 		var ctx = document.getElementById("canvas").getContext("2d");
 		window.myLine = new Chart(ctx).Line(lineChartData, {
-			responsive: true
+			//responsive: true
 		});
         }
       
   </script>
-            <canvas id="canvas" width="400" height="400"></canvas>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <ul class="list-group">
+      <li class="list-group-item">Most</li>
+      <li class="list-group-item">Dapibus ac facilisis in</li>
+      <li class="list-group-item">Morbi leo risus</li>
+      <li class="list-group-item">Porta ac consectetur ac</li>
+      <li class="list-group-item">Vestibulum at eros</li>
+    </ul>    
     
 </body>
     
