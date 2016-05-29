@@ -243,12 +243,12 @@
         
         for(var i = 0; i < postsNumLikes.length; i++){
             if(postsNumLikes[i]===undefined){
-                console.log("POST WITH UNDEFINED LIKES FOUND @ "+postDates[i]);
+                console.log("POST WITH UNDEFINED LIKES FOUND @ "+postsDates[i]);
                 
-                var newLatterPartD = postDates.slice(i+1);
+                var newLatterPartD = postsDates.slice(i+1);
                 var newLatterPartL = postsNumLikes.slice(i+1);
                 
-                postDates.splice.apply(postDates,[i,0].concat(newLatterPartD));
+                postsDates.splice.apply(postDates,[i,0].concat(newLatterPartD));
                 postsNumLikes.splice.apply(postDates,[i,0,].concat(newLatterPartL));
 //                var z = i;
 //                for (var x = 0; x < newLatterPartD.length; x++){
