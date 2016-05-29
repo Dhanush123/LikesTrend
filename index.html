@@ -195,22 +195,21 @@
             console.log("Date of post: "+postMonth+"/"+postDate+"/"+postYear); 
             
               
-            if(response.data[k].message!== undefined){
-                postsMessages[index]=response.data[k].message;
-            }  
-            else{
-                postsMessages[index]="No message/Unretrievable";
-            }  
-
                 if(dateDiff(todayD,postD)<=365){   
                     var postID = response.data[k].id;
                     postsIDS[index] = postID;
                     console.log("got post ID: "+postsIDS[index]);  
                     var likesResult = getNumLikes(postsIDS[index],index); 
-                   // if(likesResult!=-1){
-                        postsDates[index] = postMonth+"/"+postDate+"/"+postYear;
-                        index++;
-                  //  }
+                   if(likesResult!=-1){
+                    if(response.data[k].message!== undefined){
+                        postsMessages[index]=response.data[k].message;
+                    }  
+                    else{
+                        postsMessages[index]="No message/Unretrievable";
+                    }  
+                    postsDates[index] = postMonth+"/"+postDate+"/"+postYear;
+                    index++;
+                  }
                 }
               
            }    
