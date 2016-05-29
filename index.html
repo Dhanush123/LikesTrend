@@ -299,14 +299,17 @@
           for (var i = 0; i < items.length; i++){
                 
                switch(i){
-                   case 1:
-                       items[1].innerHTML+=maxLikesNum+" likes on "+maxLikesDate+" - "+postsMessages[mIndex]; 
+                   case 0:
+                       console.log("in 0 case of switch, max stuff");
+                       items[0].innerHTML+=maxLikesNum+" likes on "+maxLikesDate+" - "+postsMessages[mIndex]; 
                        break;
                    case 1:
-                        items[2].innerHTML+=leastLikesNum+" likes on "+leastLikesDate+" - "+postsMessages[lIndex];
+                        console.log("in 1 case of switch, min stuff");
+                        items[1].innerHTML+=leastLikesNum+" likes on "+leastLikesDate+" - "+postsMessages[lIndex];
                         break;
                    case 2:
-                        items[3].innerHTML+=avgLikesNum+" likes";
+                        console.log("in 2 case of switch, avg stuff");
+                        items[2].innerHTML+=avgLikesNum+" likes";
                         break;
                    default:
                }
