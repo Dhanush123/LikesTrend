@@ -165,7 +165,7 @@
                   console.log("postsIDS.length = "+postsIDS.length+", responseSize = "+responseSize);  
                   console.log("postsDates.length = "+postsDates.length+", responseSize = "+responseSize);
                   console.log("postsNumLikes.length "+postsNumLikes.length);    
-                  for(var i=0;i<postDates.length;i++){
+                  for(var i=0;i<postsDates.length;i++){
                       console.log(postsDates[i]+": "+postsNumLikes[i]+" likes");
                   }
                   setTimeout(drawGraph,15000);
@@ -235,25 +235,25 @@
         console.log("inside graph method now"); 
         
         postsDates.reverse();  
-        var postDates = postsDates.slice(0);
+        var postsDates = postsDates.slice(0);
         
-        var postDates1 = [];
+        var postsDates1 = [];
         
-        for(var i in postDates) {
-            postDates1[i] = (postDates[i].substring(0,10));
+        for(var i in postsDates) {
+            postsDates1[i] = (postsDates[i].substring(0,10));
         }
-        console.log("# dates to be used in graph: "+postDates1.length);  
-        console.log("dates to be used in graph: "+postDates1);          
+        console.log("# dates to be used in graph: "+postsDates1.length);  
+        console.log("dates to be used in graph: "+postsDates1);          
           
         
         postsNumLikes.reverse();  
-        var postData = postsNumLikes.slice(0);
-        console.log("# likes to be used in graph: "+postData.length);  
-        console.log("likes to be used in graph: "+postData);  
+        var postsData = postsNumLikes.slice(0);
+        console.log("# likes to be used in graph: "+postsData.length);  
+        console.log("likes to be used in graph: "+postsData);  
         
 		var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
 		var lineChartData = {
-			labels : postDates1,
+			labels : postsDates1,
 			datasets : [
 				{
 					label: "Likes vs. Time Data",
@@ -265,7 +265,7 @@
 					pointHighlightStroke : "rgba(220,220,220,1)",
                     showXLabels: 3,
                     pointHitDetectionRadius : 5,
-					data : postData
+					data : postsData
 				},
 			]
 		}
