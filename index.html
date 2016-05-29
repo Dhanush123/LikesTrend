@@ -50,7 +50,9 @@
   <script>
     var postsDates = [];
     var postsIDS = [];
-    var postsNumLikes = [];  
+    var postsNumLikes = []; 
+    var postDates = [];
+    var postDates1 = [];  
     var responseSize = 0;
       
         // This is called with the results from from FB.getLoginStatus().
@@ -234,9 +236,9 @@
       function cleanUpArrays(){
         (postsDates===undefined) ? console.log("POSTSDATES UNDEFINED SOMEHOW") : console.log("postsdates is fine with length: "+postsDates.length); 
         postsDates.reverse();  
-        var postDates = postsDates.slice(0);
-        
-        var postDates1 = [];
+        postDates = postsDates.slice(0);
+          
+        postDates1 = [];
         
         for(var i in postDates) {
             postDates1[i] = (postDates[i].substring(0,10));
