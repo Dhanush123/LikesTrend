@@ -242,6 +242,15 @@
             );
     }
       
+      function arraySort(array){
+           var temp;
+           for(var x=0; x < array.size-1;x++){
+               temp=array[x];
+               array[x]=array[x+1];
+               array[x+1]=temp;
+           }
+      }
+      
       function cleanUpArrays(){
         (postsDates===undefined) ? console.log("POSTSDATES UNDEFINED SOMEHOW") : console.log("postsdates is fine with length: "+postsDates.length); 
         postsDates.reverse();  
@@ -253,13 +262,11 @@
             if(postsNumLikes[i]===undefined){
                 console.log("POST WITH UNDEFINED LIKES FOUND @ "+postsDates[i]);
                 
-                for (var x = i-1; x >=0; x--){
-                    postsIDS[x+1]=postsIDS[x];
-                    postsDates[x+1]=postsDates[x];
-                    postsNumLikes[x+1]=postsNumLikes[x];
-                    postsMessages[x+1]=postsMessages[x];
-                }
-               
+                arraySort(postsIDS);
+                arraySort(postsDates);
+                arraySort(postsNumLikes);
+                arraySort(postsMessages);
+
             }
         }
           
