@@ -278,20 +278,22 @@
           var maxLikesDate, maxLikesID, leastLikesDate, leastLikesID, mIndex, lIndex, mMsg, lMsg;
          
           for(var x = 0; x < postsNumLikes.length; x++){
-              if(postsNumLikes[x]>maxLikesNum){
-                  maxLikesNum=postsNumLikes[x];
+              var likes =  postsNumLikes[x];
+              totalLikesNum = totalLikesNum + likes;
+              if(likes>maxLikesNum){
+                  maxLikesNum=likes;
                   mIndex = x;
               }
-              if(postsNumLikes[x]<leastLikesNum){
-                  leastLikesNum=postsNumLikes[x];
+              if(likes<leastLikesNum){
+                  leastLikesNum=likes;
                   lIndex = x;
               }
           }
           
-          for (var n = 0; n < postsNumLikes.length; n++){
-               console.log("likes: "+postsNumLikes[n]);
-               totalLikesNum+=postsNumLikes[n];
-          }
+//          for (var n = 0; n < postsNumLikes.length; n++){
+//               console.log("likes: "+postsNumLikes[n]);
+//               totalLikesNum+=postsNumLikes[n];
+//          }
           
           maxLikesDate = postsDates[mIndex];
           maxLikesID = postsIDS[mIndex];
