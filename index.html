@@ -286,7 +286,10 @@
                   leastLikesNum=postsNumLikes[x];
                   lIndex = x;
               }
-              totalLikesNum+=postsNumLikes[x];
+          }
+          
+          for (var n = 0; n < postsNumLikes.length; n++){
+               totalLikesNum+=postsNumLikes[x];
           }
           
           maxLikesDate = postsDates[mIndex];
