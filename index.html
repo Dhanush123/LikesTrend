@@ -286,7 +286,7 @@
                   leastLikesNum=postsNumLikes[x];
                   lIndex = x;
               }
-              avgLikesNum+=postsNumLikes[x];
+              totalLikesNum+=postsNumLikes[x];
           }
           
           maxLikesDate = postsDates[mIndex];
@@ -294,7 +294,7 @@
           leastLikesDate = postsDates[lIndex];
           leastLikesID = postsIDS[lIndex];
           console.log("total posts: "+postsNumLikes.length+", total likes: "+totalLikesNum);
-          var avgLikesNum = Math.round(avgLikesNum/postsNumLikes.length);
+          var avgLikesNum = Math.round(totalLikesNum/postsNumLikes.length);
           mMsg=postsMessages[mIndex];
           lMsg=postsMessages[lIndex];
           
